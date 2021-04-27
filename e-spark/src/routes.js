@@ -1,11 +1,16 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import { AuthProvider } from '../src/providers/auth';
 import { ScrollCategoryProvider } from '../src/providers/scrollCategory';
-import { AboutCar } from './pages/AboutCar';
 
-import Home from './pages/Home';
+import { AuthProvider } from '../src/providers/auth';
+
+import { AboutCar } from './pages/AboutCar';
+import { Checkout } from './pages/Checkout';
+import { Pagamento } from './pages/Pagamento';
+import { Planos } from './pages/Planos';
+import { User } from './pages/User';
+import { Home } from './pages/Home';
 
 export default function Routes() {
     return (
@@ -14,8 +19,12 @@ export default function Routes() {
                 <AuthProvider>
                     <ScrollCategoryProvider>
                         <Route path="/" exact component={Home} />
-                        <Route path="/aboutcar" component={AboutCar} />
                     </ScrollCategoryProvider>
+                    <Route path="/aboutcar" component={AboutCar} />
+                    <Route path="/Checkout" component={Checkout} />
+                    <Route path="/pagamento" component={Pagamento} />
+                    <Route path="/planos" component={Planos} />
+                    <Route path="/user" component={User} />
                 </AuthProvider>
             </Switch>
         </BrowserRouter>

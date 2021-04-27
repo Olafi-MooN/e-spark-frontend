@@ -53,4 +53,4 @@ const Pagamento = () => {
     );
 }
 
-export default Pagamento;
+export { Pagamento };

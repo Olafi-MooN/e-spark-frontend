@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../providers/auth";
-import { HeaderMenu } from "../../components/HeaderMenu/";
-import { LeftMenu } from "../../components/LeftMenu/";
-import { Footer } from "../../components/Footer/";
-import { Cadastro } from "../../components/Cadastro/";
-import { Login } from "../../components/Login/";
-import "./dados.css";
+import { HeaderMenu } from "../../components/HeaderMenu";
+import { LeftMenu } from "../../components/LeftMenu";
+import { Footer } from "../../components/Footer";
+import { Cadastro } from "../../components/Cadastro";
+import { Login } from "../../components/Login";
+import "./user.css";
 
-const Dados = () => {
+const User = () => {
   const { isLoginActive, isCadastroActive } = useContext(AuthContext);
   return (
     <section className="container-dados">
@@ -175,4 +175,4 @@ const Dados = () => {
   );
 };
 
-export default Dados;
+export  { User }; 
