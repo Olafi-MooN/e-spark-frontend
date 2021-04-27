@@ -47,13 +47,13 @@ const Checkout = () => {
                                 <label><FaCar color="#fff" />
                                     <p>Chevrolet Bolt</p>
                                 </label>
-                             </div>
+                            </div>
                             <div className="segundoItem">
                                 <label><FaAdjust color="#fff" />
                                     <p>Vermelho Glory</p>
                                 </label>
                             </div>
-                        </div>    
+                        </div>
                     </div>
 
                     <div className="item">
@@ -63,15 +63,15 @@ const Checkout = () => {
                         <div className="detalhe">
                             <div>
                                 <label><FaMoneyBillWaveAlt color="#fff" />
-                                    <Dropdown options={listaPreco}  value={defaultPreco} />
+                                    <Dropdown options={listaPreco} value={defaultPreco} />
                                 </label>
                             </div>
                             <div>
                                 <label><FaCalendarAlt color="#fff" />
-                                    <Dropdown options={listaTempo}  value={defaultTempo} />
+                                    <Dropdown options={listaTempo} value={defaultTempo} />
                                 </label>
                             </div>
-                        </div>    
+                        </div>
                     </div>
 
                     <div className="item">
@@ -85,7 +85,7 @@ const Checkout = () => {
                                     <p>**** **** **** 8745</p>
                                 </label>
                             </div>
-                        </div>    
+                        </div>
                     </div>
 
                     <h1> Opções de Retirada </h1>
@@ -97,14 +97,14 @@ const Checkout = () => {
                         <div className="detalhe">
                             <div>
                                 <label><FaHome color="#fff" />
-                                <div>
-                                    <p>Av. Sebastião Antonio Ribeiro, 570,</p><input type="radio" value="Male" name="gender" /><br></br>
-                                    <p className="segundaLinha">Maria José, Vespasiano - MG</p>
-                                </div>
-                                    
+                                    <div>
+                                        <p>Av. Sebastião Antonio Ribeiro, 570,</p><input type="radio" value="Male" name="gender" /><br></br>
+                                        <p className="segundaLinha">Maria José, Vespasiano - MG</p>
+                                    </div>
+
                                 </label>
                             </div>
-                        </div>    
+                        </div>
                     </div>
 
                     <div className="item">
@@ -114,14 +114,14 @@ const Checkout = () => {
                         <div className="detalhe">
                             <div>
                                 <label><FaHome color="#fff" />
-                                <div>
-                                    <p>Av. Sebastião Antonio Ribeiro, 570,</p><input type="radio" value="Male" name="gender" /><br></br>
-                                    <p className="segundaLinha">Maria José, Vespasiano - MG</p>
-                                </div>
-                                    
+                                    <div>
+                                        <p>Av. Sebastião Antonio Ribeiro, 570,</p><input type="radio" value="Male" name="gender" /><br></br>
+                                        <p className="segundaLinha">Maria José, Vespasiano - MG</p>
+                                    </div>
+
                                 </label>
                             </div>
-                        </div>    
+                        </div>
                     </div>
 
                     <div className="item">
@@ -131,21 +131,21 @@ const Checkout = () => {
                         <div className="detalhe">
                             <div>
                                 <label><FaHome color="#fff" />
-                                <div>
-                                    <p>Av. Sebastião Antonio Ribeiro, 570,</p><input type="radio" value="Male" name="gender" /><br></br>
-                                    <p className="segundaLinha">Maria José, Vespasiano - MG</p>
-                                </div>
-                                    
+                                    <div>
+                                        <p>Av. Sebastião Antonio Ribeiro, 570,</p><input type="radio" value="Male" name="gender" /><br></br>
+                                        <p className="segundaLinha">Maria José, Vespasiano - MG</p>
+                                    </div>
+
                                 </label>
                             </div>
-                        </div>    
+                        </div>
                     </div>
 
                     <div className="container-botoes">
                         <button>Voltar</button>
                         <button>Continuar</button>
                     </div>
-        
+
                 </div>
             </main>
             {isLoginActive ? <Login /> : null}
@@ -155,4 +155,4 @@ const Checkout = () => {
     );
 }
 
-export default Checkout;
+export { Checkout };
