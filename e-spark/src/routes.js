@@ -11,6 +11,7 @@ import { Pagamento } from './pages/Pagamento';
 import { Planos } from './pages/Planos';
 import { User } from './pages/User';
 import { Home } from './pages/Home';
+import { Historico } from './pages/HistoryUser';
 
 export default function Routes() {
     return (
@@ -25,6 +26,7 @@ export default function Routes() {
                     <Route path="/pagamento" component={Pagamento} />
                     <Route path="/planos" component={Planos} />
                     <Route path="/user" component={User} />
+                    <Route path="/historyUser" component={Historico} />
                 </AuthProvider>
             </Switch>
         </BrowserRouter>
