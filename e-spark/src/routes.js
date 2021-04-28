@@ -6,8 +6,8 @@ import { ScrollCategoryProvider } from "../src/providers/scrollCategory";
 import { AuthProvider } from "../src/providers/auth";
 
 import { AboutCar } from "./pages/AboutCar";
-//import { Checkout } from "./pages/Checkout";
-//import { Pagamento } from "./pages/Pagamento";
+import { Checkout } from "./pages/Checkout";
+import { Pagamento } from "./pages/Pagamento";
 import { Planos } from "./pages/Planos";
 import { Usuario } from "./pages/Usuario";
 import { Home } from "./pages/Home";
@@ -25,6 +25,8 @@ export default function Routes() {
           <Route path="/planos" component={Planos} />
           <Route path="/usuario" component={Usuario} />
           <Route path="/historyUser" component={Historico} />
+          <Route path="/checkout" component={Checkout} />
+          <Route path="/pagamento" component={Pagamento} />
         </AuthProvider>
       </Switch>
     </BrowserRouter>
