@@ -3,7 +3,7 @@ import React from "react";
 import { HeaderMenu } from "../../components/HeaderMenu/";
 import { LeftMenu } from "../../components/LeftMenu/";
 import { Footer } from "../../components/Footer/";
-import "./historico.css";
+import "./historyuser.css";
 
 const Historico = () => {
     return (
