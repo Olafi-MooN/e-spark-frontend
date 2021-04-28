@@ -26,7 +26,7 @@ export default function Routes() {
                     <Route path="/pagamento" component={Pagamento} />
                     <Route path="/planos" component={Planos} />
                     <Route path="/user" component={User} />
-                    <Route path="/historyUser" component={User} />
+                    <Route path="/historyUser" component={Historico} />
                 </AuthProvider>
             </Switch>
         </BrowserRouter>
