@@ -84,7 +84,7 @@ const HeaderMenu = () => {
                             <img src={LogoIcon} alt="logo" />
                         </Link>
                     </li>
-                    <li className="ul-li-header-menu">
+                    {/* <li className="ul-li-header-menu">
                         <SearchBar />
                     </li>
                     {
