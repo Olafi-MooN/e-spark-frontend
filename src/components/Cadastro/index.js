@@ -19,7 +19,7 @@ const Cadastro = () => {
     const [isAlert, setAlert] = useState();
     const [textAlert, setTextAlert] = useState('');
 
-    const { isCadastroActive, setIsCadastroActive, setIsLoginActive } = useContext(AuthContext);
+    const { isCadastroActive, setIsCadastroActive, setIsLoginActive, setToken} = useContext(AuthContext);
 
     function handleCloseCadastro() {
         setIsCadastroActive(false);
@@ -80,9 +80,8 @@ const Cadastro = () => {
         if (responseToJson.status === false) {
             showAlert(responseToJson.message, 5000)
         } else {
-            alert('Conta criada com sucesso')
+            setToken(responseToJson.data);
             setIsCadastroActive(false);
-            setIsLoginActive(true);
             return
         }
     }
