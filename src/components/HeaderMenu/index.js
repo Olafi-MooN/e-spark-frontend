@@ -100,9 +100,9 @@ const HeaderMenu = () => {
                                         <p className="header-p">Quem somos</p>
                                     </li>
                                     <li className="li-item">
-                                        <label class="switch">
+                                        <label className="switch">
                                             <input type="checkbox" ref={switchClick} onClick={handleChangerTheme} />
-                                            <span class="slider round"></span>
+                                            <span className="slider round"></span>
                                         </label>
                                     </li>
                                     <li className="li-item li-item-account">
@@ -135,9 +135,9 @@ const HeaderMenu = () => {
                                 <p className="header-p">Quem somos</p>
                             </li>
                             <li className="li-item">
-                                <label class="switch">
+                                <label className="switch">
                                     <input type="checkbox" ref={switchClick} onClick={handleChangerTheme} />
-                                    <span class="slider round"></span>
+                                    <span className="slider round"></span>
                                 </label>
                                 <p className="header-p">Alterar Thema</p>
                             </li>
