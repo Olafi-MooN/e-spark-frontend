@@ -17,6 +17,13 @@ const Logout = () => {
         console.log(isCadastroActive);
     }
 
+    function handleClickLogout(){
+        setUser(null);
+        localStorage.clear();
+        history.push('/');
+    }
+
+    const userStorage = JSON.parse(localStorage.getItem('user'));
 
     return (
         <>
