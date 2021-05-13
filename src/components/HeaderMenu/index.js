@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Logout } from '../Logout/index';
-import { SearchBar } from '../SearchBar/index';
 import './headermenu.css';
 
 import LogoIcon from '../../images/logo.png';
