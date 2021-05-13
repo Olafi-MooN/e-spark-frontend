@@ -25,18 +25,19 @@ const Logout = () => {
 
     const userStorage = JSON.parse(localStorage.getItem('user'));
 
+    
     return (
         <>
             <label htmlFor="account-checkbox" className="user-icon-label">
                 <img src={UserIcon} alt="" />
             </label>
-            {user !== null ?
+            {(user !== null || userStorage)  ?
                 <>
                     <input type="checkbox" id="account-checkbox" hidden />
-                    <label htmlFor="account-checkbox" className="label-entrar"> { user.first_name } </ label>
+                    <label htmlFor="account-checkbox" className="label-entrar"> { user?.email ?? userStorage?.email } </ label>
                     <ul>
                         <li onClick={handleClickJoin}><p>Perfil</p></li>
-                        <li onClick={handleClickCreateAccount}><p>Sair</p></li>
+                        <li onClick={handleClickLogout}><p>Sair</p></li>
                     </ul>
                 </>
                 :
