@@ -86,7 +86,7 @@ const HeaderMenu = () => {
                     </li>
                     {/* <li className="ul-li-header-menu">
                         <SearchBar />
-                    </li>
+                    </li> */}
                     {
                         widthScreen > 1120 ?
                             <li className="ul-li-header-menu">
