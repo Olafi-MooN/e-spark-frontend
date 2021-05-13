@@ -94,7 +94,7 @@ const HeaderMenu = () => {
                                      <li className="li-item">
                                         <img src={ContatoIcon} alt="" />
                                         <p className="header-p">Entre em contato</p>
-                                    </li> */}
+                                    </li>
                                     <li className="li-item">
                                         <img src={CompanhiaIcon} alt="" />
                                         <p className="header-p">Quem somos</p>
