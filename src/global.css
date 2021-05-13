@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cabin', sans-serif;
+}
+
+:root {
+    --corAzulPrincipal: #023E8A;
+    --corAzulClaro: #CAF0F8;
+   
+
+    --background-color-menu: #6F48C9;
+    --background-color-menu-hover: #00393f;
+    --background-color-home: #2f3136;
+    --text-title-header: #fff;
+    --color-search-bar: #ffffff;
+    --text-color: #E6E8EB;
+    --background-login: #E6E8EB;
+    --background-item-card: #494D4B;
+    --color-validation-input: #a01919;
+    --background-item-card-title-premium: #6F48C9;
+    --background-item-card-title-premium-hover: #1e1e1e;
+    --background-item-card-title-default-hover: #1e1e1e;
+    --background-item-card-title-default: #9164FA;
+}
+

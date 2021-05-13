@@ -1,0 +1,59 @@
+.container-scroll-category {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-scroll-category img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    /* scroll-snap-align: start; */
+}
+
+.scroll-category-item {
+    width: 80%;
+    display: flex;
+    height: 140px;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.scroll-category-item::-webkit-scrollbar {
+    height: 50px;
+}
+
+.scroll-category-item .item-scroll {
+    border: 2px solid var(--background-color-menu);
+    background-color: transparent;
+    border-radius: 30px;
+    min-width: 15%;
+    cursor: pointer;
+    margin: 0 10px;
+    color: var(--text-color);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    scroll-snap-align: start;
+    cursor: pointer;
+    min-width: 100px;
+}
+
+.scroll-category-item .item-scroll p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}

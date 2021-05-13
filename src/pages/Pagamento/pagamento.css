@@ -1,0 +1,118 @@
+.container-home {
+    background-color: var(--background-color-home);
+}
+
+.container-home main {
+    padding: 80px 0px 120px;
+}
+
+.container-pagamento{
+    background-color: #fff;
+    width: 80%;
+    min-height: 500px;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.container-pagamento h1 {
+    text-align: center;
+    font-weight: 700;
+    font-size: 27px;
+    color: var(--corAzulPrincipal);
+    padding-top: 30px;
+}
+
+.container-pagamento a {
+    margin-left: 6em;
+    color: var(--corAzulClaro);
+    font-size: 11px;
+}
+
+.img-pagamento img {
+    max-height: 100px;
+}
+
+.img-pagamento {
+    display: flex;
+    justify-content: center;
+    padding: 4em 0;
+}
+
+.main-pagamento{
+    display: flex;
+    justify-content: center;
+}
+
+.container-pagamento .detalhe-interno {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.filial p {
+    padding-left: 20px;
+}
+
+.item {
+    padding-top: 3em;
+}
+
+.titulo-pagamento {
+    font-size: 30px;
+    text-align: center;
+    color: var(--corAzulPrincipal);
+}
+
+.descricao-pagamento {
+    text-align: center;
+    color: var(--corAzulPrincipal);
+    padding-top: 10px;
+}
+
+.filial {
+    padding-top: 25px;
+    color: #00B4D8;
+}
+
+.btn-end {
+    padding: 8px 37px;
+    border-radius: 6px;
+    border: none;
+    color: var(--text-color);
+    background: var(--corAzulPrincipal);
+    font-size: 15px;
+}
+
+.pagamento-container-botoes {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 21px;
+}
+
+.container-home main .container-cards-cars-home{
+    width: 100%;
+    min-height: 700px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, 320px);
+    grid-auto-rows: auto;
+    grid-row-gap: 50px;
+    grid-column-gap: 20px;
+
+    justify-content: center;
+    align-items: center;
+}
+
+
+@media(max-width: 1000px) {
+    .container-home main .container-cards-cars-home {
+        grid-template-columns: repeat(2, 300px);
+    }
+}
+
+@media(max-width: 600px) {
+    .container-home main  .container-cards-cars-home{
+        grid-template-columns: repeat(1, 260px);
+    }
+}
