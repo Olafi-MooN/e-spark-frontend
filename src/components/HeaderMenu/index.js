@@ -91,7 +91,7 @@ const HeaderMenu = () => {
                         widthScreen > 1120 ?
                             <li className="ul-li-header-menu">
                                 <ul className="ul-item">
-                                    {/*  <li className="li-item">
+                                     <li className="li-item">
                                         <img src={ContatoIcon} alt="" />
                                         <p className="header-p">Entre em contato</p>
                                     </li> */}
