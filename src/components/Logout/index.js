@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import UserIcon from '../../images/user.svg';
 import { AuthContext } from '../../providers/auth';
 
 const Logout = () => {
-    const { setIsLoginActive, isCadastroActive, setIsCadastroActive, user } = useContext(AuthContext);
+    const { setIsLoginActive, isCadastroActive, setIsCadastroActive, user, setUser } = useContext(AuthContext);
+    const history = useHistory();
 
     function handleClickJoin() {
         setIsLoginActive(true);
