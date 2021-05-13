@@ -1,0 +1,12 @@
+.input-login-container.inline {
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-login-container.inline .input-container:first-child {
+    width: 35%;
+}
+
+.input-login-container.inline .input-container:last-child {
+    width: 60%;
+}

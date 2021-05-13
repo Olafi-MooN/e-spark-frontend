@@ -1,0 +1,127 @@
+.container-home {
+    background-color: var(--background-color-home);
+}
+
+.container-home main {
+    padding: 80px 0px 120px;
+}
+
+.container-checkout{
+    background-color: var(--corAzulPrincipal);
+    width: 80%;
+    min-height: 500px;
+    border-radius: 20px;
+    padding: 20px 45px;
+}
+
+.container-checkout h1 {
+    text-align: center;
+    font-weight: 200;
+    font-size: 27px;
+    color: var(--text-color);
+    padding-top: 30px;
+}
+
+.container-checkout h3 {
+    display: contents;
+    font-weight: 200;
+    color: var(--text-color);
+}
+
+.container-checkout a {
+    margin-left: 6em;
+    color: var(--corAzulClaro);
+    font-size: 11px;
+}
+
+main{
+    display: flex;
+    justify-content: center;
+}
+
+.container-checkout .detalhe-interno {
+    display: flex;
+}
+
+.item {
+    padding-top: 3em;
+}
+
+.item .detalhe {
+    padding-top: 10px;
+    display: flex;
+}
+.item .detalhe .segundoItem{
+    margin-left: 60px;
+}
+
+.item .detalhe .segundaLinha{
+    margin-top: -19px;
+}
+
+.detalhe p {
+    padding-left: 5px;
+    color: var(--text-color);
+}
+
+.detalhe-interno input {
+    margin: -13px;
+}
+
+.detalhe .Dropdown-control {
+    padding: 4px 43px 4px 5px;
+    font-size: 12px;
+    margin-left: 5px;
+    background-color: var(--corAzulPrincipal);
+    color: var(--text-color);
+    border: none;
+}
+
+.detalhe .Dropdown-option {
+    font-size: 12px;
+}
+
+.detalhe .Dropdown-arrow {
+    top: 8px;
+}
+
+.checkout-container-botoes button {
+    padding: 6px 20px;
+    border-radius: 6px;
+    border: none;
+    color: var(--corAzulPrincipal);
+}
+
+.checkout-container-botoes {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 21px;
+}
+
+.container-home main .container-cards-cars-home{
+    width: 100%;
+    min-height: 700px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, 320px);
+    grid-auto-rows: auto;
+    grid-row-gap: 50px;
+    grid-column-gap: 20px;
+
+    justify-content: center;
+    align-items: center;
+}
+
+
+@media(max-width: 1000px) {
+    .container-home main .container-cards-cars-home {
+        grid-template-columns: repeat(2, 300px);
+    }
+}
+
+@media(max-width: 600px) {
+    .container-home main  .container-cards-cars-home{
+        grid-template-columns: repeat(1, 260px);
+    }
+}

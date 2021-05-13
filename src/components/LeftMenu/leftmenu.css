@@ -1,0 +1,47 @@
+.container-left-menu {
+    display: flex;
+    position: absolute;
+    background-color: transparent;
+    height: 100vh;
+    width: 45px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin-left: 0;
+    z-index: 10;
+}
+
+.container-left-menu.active {
+    position: fixed;
+    align-items: flex-start;
+    justify-content: center;
+    animation-name: example;
+    animation-duration: 2s;
+}
+
+@keyframes example {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+
+.container-left-menu ul {
+    height: 250px;
+    background-color: var(--background-color-menu);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.container-left-menu ul li {
+    padding: 3px 0;
+    list-style: none;
+}
+
+.container-left-menu ul li img {
+    width: 25px;
+    height: 25px;
+}

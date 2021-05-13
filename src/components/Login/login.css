@@ -1,0 +1,100 @@
+ .container-login {
+     width: 100vw;
+     height: 100vh;
+     background-color: rgba(0, 0, 0, 0.412);
+     z-index: 100;
+     position: absolute;
+     top: 0;
+     left: 0;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     position: fixed;
+ }
+
+ .container-login .container-login-box {
+    background-color: var(--background-login);
+    width: 80%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+ }
+
+ .container-login .container-login-box .container-login-top {
+     display: flex;
+     width: 100%;
+     height: 10%;
+     position: relative;
+ }
+ 
+ .container-login .container-login-box .container-login-top H2{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    font-size:  min(max(30px, 4vw), 3rem);
+    text-transform: uppercase;
+ }
+ 
+ .container-login .container-login-box .container-login-top p{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: flex-end;
+    position: absolute;
+ }
+
+ .container-login .container-login-box .container-login-top p img{
+    width: min(max(20px, 4vw), 1.4rem);
+    margin-right: 20px;
+}
+
+ .container-login .container-login-box .form-login {
+    display: flex;
+    flex-direction: column;
+     width: 100%;
+     height: 78%;
+     align-items: center;
+     justify-content: center;
+ } 
+
+ .container-login .container-login-box .form-login .input-login-container {
+    width: 70%;
+    height: 25%;
+ }
+
+ .container-login .container-login-box .not-account {
+    display: flex;
+    width: 100%;
+    height: 12%;
+    background-color: var(--background-color-menu);
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+
+ }
+
+ .container-login .container-login-box .not-account p {
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    font-size: min(max(10px, 2vw), 1rem);
+ }
+
+ .container-login .container-login-box .not-account button {
+    min-height: 50%;
+    border: 2px solid var(--text-color);
+    background-color:transparent;
+    color: var(--text-color);
+    border-radius: 9px;
+    padding: 0 20px;
+    cursor: pointer;
+    transition: all ease-in 1s;
+ }  
+
+ .container-login .container-login-box .not-account button:hover {
+    border: 2px solid var(--background-color-menu-hover);
+    background-color: rgba(0, 0, 0, 0.385);
+ }
