@@ -8,41 +8,53 @@
 
 .container-ul-header-menu {
     display: flex;
+    height: 100%;
     width: 100%;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     color: var(--text-title-header);
     list-style: none;
+}
+
+.ul-li-header-menu:nth-child(1) {
+    width: 20%;
+}
+
+.ul-li-header-menu img {
+    width: 100%;
+    object-fit: contain;
+    height: 8vh;
+}
+
+.ul-li-header-menu:nth-child(2) {
+    width: 80%;
+    display: flex;
+    justify-content: center;
 }
 
 .ul-li-header-menu {
     height: 100%;
 }
 
-.ul-li-header-menu:nth-child(1) {
+/* .ul-li-header-menu:nth-child(1) {
     height: 100%;
     width: 20%;
 }
+ */
 
-.ul-li-header-menu:nth-child(1) img {
-    width: 70%;
-    height: 90%;
-}
-
-.ul-li-header-menu:nth-child(2) {
+/* .ul-li-header-menu:nth-child(2) {
     width: 25%;
 }
 
 .ul-li-header-menu:nth-child(3) {
     width: 40%;
-}
+} */
 
 .ul-li-header-menu .ul-item {
     display: flex;
-    flex-wrap: wrap;
     min-height: 100%;
     width: 100%;
-    justify-content: space-evenly;
+    justify-content: flex-end;
     align-items: center;
 }
 
@@ -75,6 +87,7 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+    margin-right: 20px;
 }
 
 .ul-li-header-menu .ul-item .li-item .user-icon-label {
@@ -105,7 +118,7 @@
     z-index: 10;
     display: block;
     position: absolute;
-    width: 163%;
+    width: 108%;
     top: 7.5vh;
     background-color: var(--background-color-menu);
 
