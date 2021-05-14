@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Logout } from '../Logout/index';
-import { SearchBar } from '../SearchBar/index';
 import './headermenu.css';
 
 import LogoIcon from '../../images/logo.png';
@@ -84,25 +83,25 @@ const HeaderMenu = () => {
                             <img src={LogoIcon} alt="logo" />
                         </Link>
                     </li>
-                    <li className="ul-li-header-menu">
+                    {/* <li className="ul-li-header-menu">
                         <SearchBar />
-                    </li>
+                    </li> */}
                     {
                         widthScreen > 1120 ?
                             <li className="ul-li-header-menu">
                                 <ul className="ul-item">
-                                    {/*  <li className="li-item">
+                                     <li className="li-item">
                                         <img src={ContatoIcon} alt="" />
                                         <p className="header-p">Entre em contato</p>
-                                    </li> */}
+                                    </li>
                                     <li className="li-item">
                                         <img src={CompanhiaIcon} alt="" />
                                         <p className="header-p">Quem somos</p>
                                     </li>
                                     <li className="li-item">
-                                        <label class="switch">
+                                        <label className="switch">
                                             <input type="checkbox" ref={switchClick} onClick={handleChangerTheme} />
-                                            <span class="slider round"></span>
+                                            <span className="slider round"></span>
                                         </label>
                                     </li>
                                     <li className="li-item li-item-account">
@@ -135,9 +134,9 @@ const HeaderMenu = () => {
                                 <p className="header-p">Quem somos</p>
                             </li>
                             <li className="li-item">
-                                <label class="switch">
+                                <label className="switch">
                                     <input type="checkbox" ref={switchClick} onClick={handleChangerTheme} />
-                                    <span class="slider round"></span>
+                                    <span className="slider round"></span>
                                 </label>
                                 <p className="header-p">Alterar Thema</p>
                             </li>

@@ -13,12 +13,10 @@ export const AuthProvider = (props) => {
         if (token !== undefined) {
             const jwt = decodeJWT(token);
             setUser(jwt);
-
-            localStorage.setItem('user', JSON.stringify(jwt));
-
-            /* var retrievedObject = localStorage.getItem('testObject');
-
-            console.log('retrievedObject: ', JSON.parse(retrievedObject)); */
+            
+            if (jwt !== null) {
+                localStorage.setItem('user', JSON.stringify(jwt));
+            }
         }
     }, [token])
 
