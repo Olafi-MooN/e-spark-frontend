@@ -31,6 +31,7 @@ const HeaderMenu = () => {
             ["--background-item-card-title-premium-hover", "#f8f9fa"],
             ["--background-item-card-title-default-hover", "#1e1e1"],
             ["--background-item-card-title-default", "#5f4aa1"],
+            ["--text-link-color", "#5f4aa1"],
         ]
 
         colors.map((item, index) => {
@@ -52,6 +53,7 @@ const HeaderMenu = () => {
             ["--background-item-card-title-premium-hover", "#1e1e1e"],
             ["--background-item-card-title-default-hover", "#1e1e1e"],
             ["--background-item-card-title-default", "#9164FA"],
+            ["--text-link-color", "#5f4aa1"],
         ]
 
         colors.map((item, index) => {
