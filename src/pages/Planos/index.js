@@ -13,8 +13,8 @@ import './planos.css';
 
 
 const Planos = () => {
-    
-    function handleToTop () {
+
+    function handleToTop() {
         window.scrollTo(0, 0)
     }
 
@@ -25,7 +25,7 @@ const Planos = () => {
         <div className="container-home" onLoad={handleToTop} >
             <HeaderMenu />
             <LeftMenu />
-            <main>
+            {/* <main>
                 <div class="container-branco">
                     <h1>Selecione Um Plano Para Pagamento</h1>
                     <div class="container-geralDiv">
@@ -46,10 +46,69 @@ const Planos = () => {
                 </div>
             </main>
             {isLoginActive ? <Login /> : null}
-            {isCadastroActive ? <Cadastro /> : null}
+            {isCadastroActive ? <Cadastro /> : null} */}
+            <div className="container-plan">
+                <div className="listplan">
+                    <div className="plan">
+                        <div className="plan-item">
+                            <div className="plain-item-price">
+                                <h1>R$ 300,00</h1>
+                            </div>
+                            <h1 className="title-card-plan">Diário</h1>
+                            <p className="p-plan">Precisa de um aluguel por um dia, esse plano é ideal para você</p>
+                            <button className="btn" type="button">Alugar</button>
+                        </div>
+                    </div>
+                    <div className="plan">
+                        <div className="plan-item">
+                            <div className="plain-item-price">
+                                <h1>R$ 300,00</h1>
+                            </div>
+                            <h1 className="title-card-plan">Diário</h1>
+                            <p className="p-plan">Precisa de um aluguel por um dia, esse plano é ideal para você</p>
+                            <button className="btn" type="button">Alugar</button>
+                        </div>
+                    </div>
+                    <div className="plan">
+                        <div className="plan-item">
+                        <div className="plain-item-price">
+                                <h1>R$ 300,00</h1>
+                            </div>
+                            <h1 className="title-card-plan">Diário</h1>
+                            <p className="p-plan">Precisa de um aluguel por um dia, esse plano é ideal para você</p>
+                            <button className="btn" type="button">Alugar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="listplan">
+                    <div className="plan">
+                        <div className="plan-item">
+                            <div className="plain-item-price">
+                                <h1>R$ 300,00</h1>
+                            </div>
+                            <h1 className="title-card-plan">Diário</h1>
+                            <p className="p-plan">Precisa de um aluguel por um dia, esse plano é ideal para você</p>
+                            <button className="btn" type="button">Alugar</button>
+                        </div>
+                    </div>
+                    <div className="plan">
+                        <div className="plan-item">
+                            <div className="plain-item-price">
+                                <h1>R$ 300,00</h1>
+                            </div>
+                            <h1 className="title-card-plan">Diário</h1>
+                            <p className="p-plan">Precisa de um aluguel por um dia, esse plano é ideal para você</p>
+                            <button className="btn" type="button">Alugar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
             <Footer />
-        </div>
-    );
+        </div>)
 }
 
 export { Planos };
