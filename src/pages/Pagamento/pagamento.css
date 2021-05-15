@@ -18,13 +18,13 @@
     text-align: center;
     font-weight: 700;
     font-size: 27px;
-    color: var(--corAzulPrincipal);
+    color: var(--background-color-menu);
     padding-top: 30px;
 }
 
 .container-pagamento a {
     margin-left: 6em;
-    color: var(--corAzulClaro);
+    color: var(--text-link-color);
     font-size: 11px;
 }
 
@@ -60,18 +60,18 @@
 .titulo-pagamento {
     font-size: 30px;
     text-align: center;
-    color: var(--corAzulPrincipal);
+    color: var(--background-color-menu);
 }
 
 .descricao-pagamento {
     text-align: center;
-    color: var(--corAzulPrincipal);
+    color: var(--background-color-menu);
     padding-top: 10px;
 }
 
 .filial {
     padding-top: 25px;
-    color: #00B4D8;
+    color: #2f3136;
 }
 
 .btn-end {
@@ -79,7 +79,7 @@
     border-radius: 6px;
     border: none;
     color: var(--text-color);
-    background: var(--corAzulPrincipal);
+    background: var(--background-color-menu);
     font-size: 15px;
 }
 

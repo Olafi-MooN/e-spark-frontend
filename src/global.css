@@ -8,10 +8,6 @@
 }
 
 :root {
-    --corAzulPrincipal: #023E8A;
-    --corAzulClaro: #CAF0F8;
-   
-
     --background-color-menu: #6F48C9;
     --background-color-menu-hover: #00393f;
     --background-color-home: #2f3136;
@@ -25,5 +21,6 @@
     --background-item-card-title-premium-hover: #1e1e1e;
     --background-item-card-title-default-hover: #1e1e1e;
     --background-item-card-title-default: #9164FA;
+    --text-link-color: #cab7f6;
 }
 
