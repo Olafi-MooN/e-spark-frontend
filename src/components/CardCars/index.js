@@ -59,7 +59,7 @@ const CardCars = ({
     }
 
     function handleClickAlugar() {
-        return user === null ? setIsLoginActive(true) : history.push('/planos');
+        return user === null ? setIsLoginActive(true) : history.push('/plan');
     }
 
     return (
