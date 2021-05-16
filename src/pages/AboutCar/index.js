@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import { HeaderMenu } from '../../components/HeaderMenu';
 import { Footer } from '../../components/Footer';
@@ -13,11 +13,16 @@ import { AboutCarContext } from '../../providers/cards';
 import './aboutcar.css';
 
 const AboutCar = () => {
-    const { isLoginActive, isCadastroActive } = useContext(AuthContext);
+    const { isLoginActive, isCadastroActive, setIsLoginActive, user } = useContext(AuthContext);
     const { aboutCar } = useContext(AboutCarContext);
+    const history = useHistory();
 
-    function handleToTop () {
+    function handleToTop() {
         window.scrollTo(0, 0)
+    }
+
+    function handleClickRent() {
+        return user === null ? setIsLoginActive(true) : history.push('/plan');
     }
     
     return (
@@ -78,7 +83,7 @@ const AboutCar = () => {
             </div>
             <div className="about-btn-rent">
                 <Link to="/"><button className="btn-back">voltar</button></Link> 
-                <Link to="/"><button className="btn-back-rent">Alugar veículo</button></Link>
+                <Link to="#"><button className="btn-back-rent" onClick={handleClickRent}>Alugar veículo</button></Link>
             </div>
             <Footer />
             {isLoginActive ? <Login /> : null}
