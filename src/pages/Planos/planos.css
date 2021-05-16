@@ -130,7 +130,6 @@ main {
 .container-plan {
     width: 100%;
     min-height: 90vh;
-    margin: 80px 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -151,14 +150,13 @@ main {
     width: 20%;
     margin: 0 10px;
     background-color: var(--background-item-card);
-    cursor: pointer;
     transition: all ease 500ms;
     border-radius: 12px;
 }
 
 
 .container-plan .listplan .plan:hover {
-    height: 100%;
+    height: 110%;
     width: 23%;
 }
 
@@ -190,12 +188,16 @@ main {
 
 .container-plan .listplan .plan .plan-item .title-card-plan {
     color: var(--text-title-header);
+    width: 100%;
+    font-size: 160%;
 }
 
 .container-plan .listplan .plan .plan-item .p-plan {
     text-align: center;
+    text-justify: newspaper;
     margin: 0 auto;
     width: 90%;
+    max-width: 200px;
     color: var(--text-title-header);
 }
 
@@ -211,4 +213,34 @@ main {
     width: 72%;
     height: 40px;
     padding: 5px 0;
+    transition: all ease 400ms;
+}
+
+.container-plan .listplan .plan .plan-item .btn:hover {
+    filter: brightness(1.3);
+}
+
+@media (max-width: 800px) {
+
+    .container-plan {
+        height: 1500px;
+    }
+    .container-plan .listplan {
+        height: 100%;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .container-plan .listplan {
+        height: 100%;
+        justify-content: space-evenly;
+    }
+    .container-plan .listplan .plan {
+        width: 60%;
+        height: 320px;
+    }
+    .container-plan .listplan .plan:hover {
+        height: 330px;
+        width: 65%;
+    }
+    
 }
