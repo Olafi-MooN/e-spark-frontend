@@ -41,6 +41,11 @@ main{
 
 .container-checkout .detalhe-interno {
     display: flex;
+    justify-content: space-between;
+}
+
+.container-checkout .detalhe-interno.plan {
+    flex-direction: column;
 }
 
 .item {
