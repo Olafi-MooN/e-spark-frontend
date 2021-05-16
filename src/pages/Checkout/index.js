@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 
 import { AuthContext } from '../../providers/auth';
+import { PaymentContext } from '../../providers/payment';
 
 import { Link } from 'react-router-dom';
 import Dropdown from 'react-dropdown';
@@ -15,16 +16,16 @@ import { FaCar } from 'react-icons/fa';
 import { FaAdjust } from 'react-icons/fa';
 import { FaMoneyCheck } from 'react-icons/fa';
 import { FaCalendarAlt } from 'react-icons/fa';
-import { FaMoneyBillWaveAlt } from 'react-icons/fa';
+import { FaDollarSign } from 'react-icons/fa';
 import { FaHome } from 'react-icons/fa';
 
-
 import './checkout.css';
-
 
 const Checkout = () => {
 
     const { isLoginActive, isCadastroActive } = useContext(AuthContext);
+    const { plan, aboutCar } = useContext(PaymentContext);
+
     const listaPreco = ["R$ 399,00/Semana", "R$ 399,00/Semana", "R$ 399,00/Semana", "R$ 399,00/Semana", "R$ 399,00/Semana"];
     const defaultPreco = listaPreco[0];
     const listaTempo = ["3(três) Semanas", "3(três) Semanas", "3(três) Semanas", "3(três) Semanas", "3(três) Semanas"];
@@ -42,16 +43,16 @@ const Checkout = () => {
                         <h3>
                             Veículo Selecionado
                         </h3>
-                        <Link to="#" className="">Alterar</Link>
+                        <Link to="/" className="">Alterar</Link>
                         <div className="detalhe">
                             <div>
                                 <label className="detalhe-interno"><FaCar color="#fff" />
-                                    <p>Chevrolet Bolt</p>
+                                    <p>{ aboutCar?.title ?? "Chevrolet Bolt"}</p>
                                 </label>
                              </div>
                             <div className="segundoItem">
                                 <label className="detalhe-interno"><FaAdjust color="#fff" />
-                                    <p>Vermelho Glory</p>
+                                    <p>{ aboutCar?.brand ?? "Vermelho Glory"}</p>
                                 </label>
                             </div>
                         </div>    
@@ -63,15 +64,17 @@ const Checkout = () => {
                         </h3>
                         <div className="detalhe">
                             <div>
-                                <label className="detalhe-interno"><FaMoneyBillWaveAlt color="#fff" />
-                                    <Dropdown options={listaPreco}  value={defaultPreco} />
+                                <label className="detalhe-interno plan">
+                                    {/* <Dropdown options={listaPreco}  value={defaultPreco} /> */} 
+                                     <p><FaCalendarAlt color="#fff" /> { plan?.title }</p>
+                                     <p><FaDollarSign color="#fff" />  Valor: { plan?.price }</p>
                                 </label>
                             </div>
-                            <div>
+                            {/* <div>
                                 <label className="detalhe-interno"><FaCalendarAlt color="#fff" />
-                                    <Dropdown options={listaTempo}  value={defaultTempo} />
+                                   <Dropdown options={listaTempo}  value={defaultTempo} />
                                 </label>
-                            </div>
+                            </div> */}
                         </div>    
                     </div>
 
