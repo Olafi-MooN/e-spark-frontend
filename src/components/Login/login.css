@@ -49,6 +49,7 @@
  .container-login .container-login-box .container-login-top p img{
     width: min(max(20px, 4vw), 1.4rem);
     margin-right: 20px;
+    cursor: pointer;
 }
 
  .container-login .container-login-box .form-login {
