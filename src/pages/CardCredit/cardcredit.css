@@ -1,0 +1,104 @@
+.cardcredit-container {
+    background-color: var(--background-color-home);
+    overflow: hidden;
+}
+
+.creditcard {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cardcredit-container .creditcard .card-credit-item {
+    position: relative;
+    height: 55%;
+    width: 55%;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    padding: 20px 40px;
+    border-radius: 15px;
+    z-index: 10;
+}
+
+.cardcredit-container .creditcard .card-credit-item::before {
+    content: "";
+    background-color: var(--background-color-menu);
+    position: absolute;
+    bottom:  0;
+    right: 0;
+    width: 200px;
+    height: 200px;
+    border-top-left-radius: 100%;
+    border-bottom-right-radius: 15px;
+}
+
+.cardcredit-container .creditcard .card-credit-item .card-item-header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    z-index: 10;
+}
+
+.cardcredit-container .creditcard .card-credit-item .card-item-header .title-card {
+    font-weight: 400;
+    font-size: 1.3rem;
+    color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
+}
+.cardcredit-container .creditcard .card-credit-item .card-item-header .name-bank {
+    font-weight: 700;
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
+}
+
+.cardcredit-container .creditcard .card-credit-item img {
+    width: 50px;
+    height: 50px;
+    margin-top: 15px;
+}
+.cardcredit-container .creditcard .card-credit-item p {
+    font-family: 'Poppins', sans-serif;
+    margin-top: 15px;
+    color: var(--text-color)
+}
+
+.cardcredit-container .creditcard .card-credit-item .input-number-card {
+    width: 90%;
+    margin-top: 10px;
+    background-color: var(--background-login);
+    height: 40px;
+    border-radius: 6px;
+    border: 1px solid #2f3136;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+    padding-left: 10px;
+}
+
+.cardcredit-container .creditcard .card-credit-item .input-number-card:focus {
+    outline: none;
+}
+
+.cardcredit-container .creditcard .card-credit-item .button-confirm-card {
+    background-color: var(--background-color-menu);
+    margin-top: 70px;
+    border: none;
+    height: 40px;
+    width: 100px;
+    color: var(--text-color);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cardcredit-container .creditcard .card-credit-item .validation-p {
+    max-height: 30px;
+    width: 100%;
+    margin-top: 5px;
+    text-align: left;
+    color: var(--color-validation-input2);
+    position: absolute;
+    font-size:  min(max(10px, 2vw), 15px);
+}
