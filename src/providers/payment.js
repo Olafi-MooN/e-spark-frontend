@@ -9,13 +9,16 @@ export const PaymentProvider = (props) => {
     const { user } = useContext(AuthContext);
     const { aboutCar } = useContext(AboutCarContext);
     const [ plan, setPlan ] = useState(null);
+    const [ creditCard, setCreditCard ] = useState(null);
 
     return (
         <PaymentContext.Provider value={{
             user,
             plan, 
             setPlan,
-            aboutCar
+            aboutCar,
+            creditCard, 
+            setCreditCard
         }}>
 
             {props.children}

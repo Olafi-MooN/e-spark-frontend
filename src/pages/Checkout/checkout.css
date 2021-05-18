@@ -28,7 +28,7 @@
     color: var(--color-search-bar);
 }
 
-.container-checkout a {
+.container-checkout .linkalter{
     margin-left: 6em;
     color: var( --text-link-color);
     font-size: 11px;
@@ -90,7 +90,7 @@ main{
     top: 8px;
 }
 
-.checkout-container-botoes button {
+.checkout-container-botoes  button {
     padding: 6px 20px;
     border-radius: 6px;
     border: none;
@@ -118,6 +118,49 @@ main{
     align-items: center;
 }
 
+.checkout-container-botoes button {
+    margin-top: 70px;
+    width: 40%;
+    min-width: 150px;
+    height: 50px;
+    cursor: pointer;
+    border: 2px solid var(--background-login);
+    border-radius: 7px;
+    background-color: transparent;
+    color: var(--text-color);
+    font-size: 1rem;
+    position: relative;
+    transition: all ease-in 500ms;
+}
+
+.checkout-container-botoes button::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 0;
+    background-color: rgba(204, 191, 174, 0.274);
+    bottom: 0;
+    left: 0;
+    transition: all ease-in 400ms;
+}
+
+.checkout-container-botoes button:hover::after {
+    height: 100%;
+}
+
+.filial {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0px;
+}
+
+.container-checkout .optionOut {
+    padding-top: 60px;
+    padding-bottom: 0;
+}
+
 
 @media(max-width: 1000px) {
     .container-home main .container-cards-cars-home {
@@ -128,5 +171,8 @@ main{
 @media(max-width: 600px) {
     .container-home main  .container-cards-cars-home{
         grid-template-columns: repeat(1, 260px);
+    }
+    .filial {
+        flex-direction: column;
     }
 }

@@ -4,8 +4,6 @@ import { AuthContext } from '../../providers/auth';
 import { PaymentContext } from '../../providers/payment';
 
 import { Link } from 'react-router-dom';
-import Dropdown from 'react-dropdown';
-import 'react-dropdown/style.css';
 
 import { HeaderMenu } from '../../components/HeaderMenu/';
 import { Cadastro } from '../../components/Cadastro/';
@@ -24,12 +22,7 @@ import './checkout.css';
 const Checkout = () => {
 
     const { isLoginActive, isCadastroActive } = useContext(AuthContext);
-    const { plan, aboutCar } = useContext(PaymentContext);
-
-    const listaPreco = ["R$ 399,00/Semana", "R$ 399,00/Semana", "R$ 399,00/Semana", "R$ 399,00/Semana", "R$ 399,00/Semana"];
-    const defaultPreco = listaPreco[0];
-    const listaTempo = ["3(três) Semanas", "3(três) Semanas", "3(três) Semanas", "3(três) Semanas", "3(três) Semanas"];
-    const defaultTempo = listaTempo[0];
+    const { plan, aboutCar, creditCard } = useContext(PaymentContext);
 
     return (
         <div className="container-home">
@@ -37,25 +30,26 @@ const Checkout = () => {
             <LeftMenu />
 
             <main>
+
                 <div className="container-checkout">
                     <h1> Checkout </h1>
                     <div className="item">
                         <h3>
                             Veículo Selecionado
                         </h3>
-                        <Link to="/" className="">Alterar</Link>
+                        <Link to="/" className="linkalter">Alterar</Link>
                         <div className="detalhe">
                             <div>
                                 <label className="detalhe-interno"><FaCar color="#fff" />
-                                    <p>{ aboutCar?.title ?? "Chevrolet Bolt"}</p>
-                                </label>
-                             </div>
-                            <div className="segundoItem">
-                                <label className="detalhe-interno"><FaAdjust color="#fff" />
-                                    <p>{ aboutCar?.brand ?? "Vermelho Glory"}</p>
+                                    <p>{aboutCar?.title ?? "Chevrolet Bolt"}</p>
                                 </label>
                             </div>
-                        </div>    
+                            <div className="segundoItem">
+                                <label className="detalhe-interno"><FaAdjust color="#fff" />
+                                    <p>{aboutCar?.brand ?? "Vermelho Glory"}</p>
+                                </label>
+                            </div>
+                        </div>
                     </div>
 
                     <div className="item">
@@ -65,90 +59,77 @@ const Checkout = () => {
                         <div className="detalhe">
                             <div>
                                 <label className="detalhe-interno plan">
-                                    {/* <Dropdown options={listaPreco}  value={defaultPreco} /> */} 
-                                     <p><FaCalendarAlt color="#fff" /> { plan?.title }</p>
-                                     <p><FaDollarSign color="#fff" />  Valor: { plan?.price }</p>
+                                    <p><FaCalendarAlt color="#fff" /> {plan?.title ?? 'Diário'}</p>
+                                    <p><FaDollarSign color="#fff" />  Valor: {plan?.price ?? 'R$ 300,00'}</p>
                                 </label>
                             </div>
-                            {/* <div>
-                                <label className="detalhe-interno"><FaCalendarAlt color="#fff" />
-                                   <Dropdown options={listaTempo}  value={defaultTempo} />
-                                </label>
-                            </div> */}
-                        </div>    
+                        </div>
                     </div>
 
                     <div className="item">
                         <h3>
                             Método de Pagamento
                         </h3>
-                        <Link to="#" className="">Alterar</Link>
+                        <Link to="#" className="linkalter">Alterar</Link>
                         <div className="detalhe">
                             <div>
-                                <label className="detalhe-interno"><FaMoneyCheck color="#fff" />
-                                    <p>**** **** **** 8745</p>
+                                <label className="detalhe-interno plan">
+                                    <p><FaMoneyCheck color="#fff" /> Cartão de crédito: {creditCard ?? "**** **** **** 8745"}</p>
                                 </label>
                             </div>
-                        </div>    
+                        </div>
                     </div>
+                    <h1 className="optionOut"> Opções de Retirada </h1>
+                    <div className="filial">
+                        <div>
 
-                    <h1> Opções de Retirada </h1>
-
-                    <div className="item">
-                        <h3>
-                            Filial 1
-                        </h3>
-                        <div className="detalhe">
-                            <div>
-                                <label className="detalhe-interno"><FaHome color="#fff" />
-                                <div>
-                                    <p>Av. Sebastião Antonio Ribeiro, 570,</p><input type="radio" value="Male" name="gender" /><br></br>
-                                    <p className="segundaLinha">Maria José, Vespasiano - MG</p>
-                                </div>
-                                    
-                                </label>
-                            </div>
-                        </div>    
-                    </div>
-
-                    <div className="item">
-                        <h3>
-                            Filial 2
-                        </h3>
-                        <div className="detalhe">
-                            <div>
-                                <label className="detalhe-interno"><FaHome color="#fff" />
-                                <div>
-                                    <p>Av. Sebastião Antonio Ribeiro, 570,</p><input type="radio" value="Male" name="gender" /><br></br>
-                                    <p className="segundaLinha">Maria José, Vespasiano - MG</p>
-                                </div>
-                                    
-                                </label>
-                            </div>
-                        </div>    
-                    </div>
-
-                    <div className="item">
-                        <h3>
-                            Filial 3
-                        </h3>
-                        <div className="detalhe">
-                            <div>
-                                <label className="detalhe-interno"><FaHome color="#fff" />
+                            <div className="item">
+                                <h3>Filial 1</h3>
+                                <div className="detalhe">
                                     <div>
-                                        <p>Av. Sebastião Antonio Ribeiro, 570,</p><input type="radio" value="Male" name="gender" /><br></br>
-                                        <p className="segundaLinha">Maria José, Vespasiano - MG</p>
+                                        <label className="detalhe-interno"><FaHome color="#fff" />
+                                            <div>
+                                                <p>Av. Sebastião Antonio Ribeiro, 570,</p><input type="radio" value="Male" name="gender" /><br></br>
+                                                <p className="segundaLinha">Maria José, Vespasiano - MG</p>
+                                            </div>
+                                        </label>
                                     </div>
-                                </label>
+                                </div>
                             </div>
-                        </div>    
+                        </div>
+                        <div className="item">
+                            <h3>Filial 2</h3>
+                            <div className="detalhe">
+                                <div>
+                                    <label className="detalhe-interno"><FaHome color="#fff" />
+                                        <div>
+                                            <p>Av. Sebastião Antonio Ribeiro, 570,</p><input type="radio" value="Male" name="gender" /><br></br>
+                                            <p className="segundaLinha">Maria José, Vespasiano - MG</p>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="item">
+                            <h3>Filial 3</h3>
+                            <div className="detalhe">
+                                <div>
+                                    <label className="detalhe-interno"><FaHome color="#fff" />
+                                        <div>
+                                            <p>Av. Sebastião Antonio Ribeiro, 570,</p><input type="radio" value="Male" name="gender" /><br></br>
+                                            <p className="segundaLinha">Maria José, Vespasiano - MG</p>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div className="checkout-container-botoes">
-                        <button>Voltar</button>
-                        <button>Continuar</button>
+                        <Link to="/"><button>Inicio</button></Link>
+                        <Link to="/Payment"><button>Continuar</button></Link>
                     </div>
-        
                 </div>
             </main>
             {isLoginActive ? <Login /> : null}
