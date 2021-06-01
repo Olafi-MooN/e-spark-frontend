@@ -1,4 +1,5 @@
-import React, { useContext, useState, useRef } from 'react';
+import React, { useContext, useState, useEffect, useRef } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import { HeaderMenu } from '../../components/HeaderMenu/';
 import { Footer } from '../../components/Footer/';
@@ -9,34 +10,34 @@ import chipIcon from '../../images/chip.svg';
 import './cardcredit.css';
 
 const CardCredit = () => {
-    const { user, setPlan, plan } = useContext(PaymentContext);
-    const text = useRef(null);
-    const [isNumber, setIsNumber] = useState(true);
-    const [isNull, setIsNull] = useState(true);
-    const [number, setNumber] = useState(Number());
+    const { user, setCreditCard } = useContext(PaymentContext);
+    const inputRef = useRef(null);
+    const history = useHistory();
+    const [number, setNumber] = useState(0);
+    const [numberTrue, setNumberTrue] = useState(0);
+    const [isNumber, setIsNumber] = useState(false);
 
-    function isEmpty(value){
-        value === '' ? setIsNull(true) : setIsNull(false);
-    }
+    useEffect(() => {
+        var regex = /^[0-9.]+$/;
 
-    function verifyIsNumber(numberInput) {
-        const regex = /^[0-9.]+$/;
-        const resultRegex = numberInput.match(regex);
-
-        if (resultRegex === null) {
-            setIsNumber(false);
-            text.current.type = "reset";
-            text.current.type = "text";
-            text.current.value = number;
-        } else {
-            setNumber(numberInput)
-            setIsNumber(true);
+        if (number === '') {
+            return '';
         }
-    }
-    
-    function verifyInput(e) {
-        isEmpty(e.target.value);
-        verifyIsNumber(e.target.value);
+
+        if (number?.key?.match(regex) !== null ?? null) {
+            setNumberTrue(inputRef.current.value);
+            setIsNumber(true);
+        } else {
+            inputRef.current.value = numberTrue;
+            setIsNumber(false);
+        }
+    }, [number, inputRef, numberTrue]);
+
+    function handleClickConfirm() {
+        if (number !== 0 && inputRef.current.value !== '') {
+            setCreditCard(inputRef.current.value);
+            return history.push('/checkout');
+        }
     }
 
     return (
@@ -50,14 +51,19 @@ const CardCredit = () => {
                     </div>
                     <img src={chipIcon} alt="" />
                     <p> Name: {user?.first_name ?? 'Alef Santos'}</p>
-                    <input type="number" className="input-number-card"
-                        placeholder="Digite o número do seu cartão"
-                        ref={text}
-                        onKeyPress={e => verifyInput(e)}
-                        onChange={e => setPlan(e.target.value)} />
-                    {isNumber ? null: <p className="validation-p" >Digite apenas números</p>}
-                    <button className="button-confirm-card" onClick={() => alert(plan)} >Confirmar</button>
+                    <div className="container-input-card">
+                        <input
+                            type="text"
+                            className="input-number-card"
+                            placeholder="Digite o número do seu cartão"
+                            onKeyPress={(e) => setNumber(e)}
+                            ref={inputRef}/>
+                        {isNumber ? null : <p className="validation-p" >Digite apenas números</p>}
+                    </div>
 
+                    <button
+                        className="button-confirm-card"
+                        onClick={handleClickConfirm} >Confirmar</button>
                 </div>
             </div>
             <Footer />

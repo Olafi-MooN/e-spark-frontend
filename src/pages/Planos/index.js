@@ -11,7 +11,7 @@ import { Footer } from '../../components/Footer/';
 import './planos.css';
 
 const Planos = () => {
-    const { setPlan, plan } = useContext(PaymentContext);
+    const { setPlan } = useContext(PaymentContext);
     const history = useHistory();
 
     function handleToTop() {
@@ -22,7 +22,7 @@ const Planos = () => {
         const planSelect = arrayPlan[e.target.id];
         setPlan(planSelect);
 
-        history.push('/checkout')
+        history.push('/creditcard')
     }
 
     const arrayPlan = [

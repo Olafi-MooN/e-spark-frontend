@@ -24,7 +24,7 @@ const Home = () => {
     const [ fakeDateCars ] = useState([1, 2, 3, 4, 5, 6])
 
     useEffect(() => {
-        fetch('http://localhost:5000/cars')
+        fetch('https://e-spark-back.herokuapp.com/cars')
             .then(response => response.json())
             .then(result => {
                 setDateCars(result.cars);
