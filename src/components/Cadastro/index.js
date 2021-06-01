@@ -51,7 +51,7 @@ const Cadastro = () => {
 
         let hasResponse = true;
 
-        const response = await fetch('http://localhost:5000/users', {
+        const response = await fetch('https://e-spark-back.herokuapp.com/users', {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache',
