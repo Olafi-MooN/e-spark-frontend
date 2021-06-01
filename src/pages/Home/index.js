@@ -21,7 +21,7 @@ const Home = () => {
     const { isLoginActive, isCadastroActive } = useContext(AuthContext);
     const { nameCategoryActive, activeCategory } = useContext(ScrollCategoryContext);
     const [ dateCars, setDateCars ] = useState([0]);
-    const [ fakeDateCars ] = useState([1, 2, 3, 4, 5, 6])
+    const [ fakeDateCars ] = useState([1, 2, 3, 4, 5, 6]);
 
     useEffect(() => {
         fetch('https://e-spark-back.herokuapp.com/cars')

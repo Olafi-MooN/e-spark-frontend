@@ -12,6 +12,10 @@ const Logout = () => {
         setIsLoginActive(true);
     }
 
+    function handleClickUser() {
+        history.push('/usuario')
+    }
+
     function handleClickCreateAccount() {
         setIsCadastroActive(true);
         console.log(isCadastroActive);
@@ -36,7 +40,7 @@ const Logout = () => {
                     <input type="checkbox" id="account-checkbox" hidden />
                     <label htmlFor="account-checkbox" className="label-entrar"> { user?.email ?? userStorage?.email } </ label>
                     <ul>
-                        <li onClick={handleClickJoin}><p>Perfil</p></li>
+                        <li onClick={handleClickUser}><p>Perfil</p></li>
                         <li onClick={handleClickLogout}><p>Sair</p></li>
                     </ul>
                 </>
