@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 
 import { AuthContext } from '../../providers/auth';
+import { PaymentContext } from '../../providers/payment';
 
 import { HeaderMenu } from '../../components/HeaderMenu/';
 import { Cadastro } from '../../components/Cadastro/';
@@ -16,8 +17,9 @@ import './pagamento.css';
 const Pagamento = () => {
 
     const { isLoginActive, isCadastroActive } = useContext(AuthContext);
+    const { user } = useContext(PaymentContext);
 
-    return (
+   return (
         <div className="container-home">
             <HeaderMenu />
             <LeftMenu />
@@ -33,7 +35,7 @@ const Pagamento = () => {
                 </figure>
                 
                 <p className="titulo-pagamento">Pagamento aprovado!</p>
-                <p className="descricao-pagamento">Tudo certo Janete! Você já pode retirar seu Chevrolet Bolt na Filial 03!</p>
+                <p className="descricao-pagamento">Tudo certo {user?.first_name ?? 'Alef Santos'} Você já pode retirar seu Chevrolet Bolt na Filial 03!</p>
 
                 <div className="filial">
                     <label className="detalhe-interno"><FaHome color="#00B4D8" font-size="45px" />

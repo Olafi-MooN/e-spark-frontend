@@ -74,8 +74,8 @@ const Login = () => {
             if (response !== undefined) {
                 const responseToJson = await response.json();
 
-                if (responseToJson.status === false) {
-                    showAlert(responseToJson, 5000)
+                if (responseToJson?.status === false) {
+                    return showAlert('Usuário ou senha incorretos', 5000)
                 }
 
                 if (responseToJson) {
