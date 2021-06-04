@@ -14,6 +14,7 @@ import { Login } from '../../components/Login/';
 
 
 import './home.css';
+import { Loading } from '../../components/Loading';
 
 
 const Home = () => {
@@ -21,6 +22,7 @@ const Home = () => {
     const { isLoginActive, isCadastroActive } = useContext(AuthContext);
     const { nameCategoryActive, activeCategory } = useContext(ScrollCategoryContext);
     const [ dateCars, setDateCars ] = useState([0]);
+    const [ isLoading, setIsLoading ] = useState(true)
     const [ fakeDateCars ] = useState([1, 2, 3, 4, 5, 6]);
 
     useEffect(() => {
@@ -28,12 +30,13 @@ const Home = () => {
             .then(response => response.json())
             .then(result => {
                 setDateCars(result.cars);
-                console.log(result.cars[0].name_car)
+                setIsLoading(false);
             });
     }, []);
 
     return (
         <div className="container-home">
+            {isLoading ? <Loading/> : null}
             <HeaderMenu />
             <SlideShow />
             <LeftMenu />
