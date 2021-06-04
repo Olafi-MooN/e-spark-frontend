@@ -25,7 +25,7 @@ const ScrollCategory = () => {
         'SUV']);
 
     useEffect(() => {
-        fetch('http://localhost:5000/cars')
+        fetch('https://e-spark-back.herokuapp.com/cars')
             .then(response => response.json())
             .then(result => {
                 const arrayModel = result.cars.map(item => {

@@ -9,12 +9,14 @@ import { Input } from '../Input';
 import closeIcon from '../../images/close.svg';
 
 import './login.css';
+import { Loading } from '../Loading';
 
 const Login = () => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [isAlert, setAlert] = useState();
     const [textAlert, setTextAlert] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     const { isLoginActive, setIsLoginActive, setIsCadastroActive, setToken } = useContext(AuthContext);
 
@@ -30,6 +32,7 @@ const Login = () => {
 
     function showAlert(text, time) {
         setTextAlert(text);
+        setIsLoading(false);
         setAlert(true);
         setTimeout(() => {
             setAlert(false);
@@ -38,6 +41,7 @@ const Login = () => {
 
     async function handleSubmit(e) {
         e.preventDefault();
+        setIsLoading(true)
 
         if (email) {
             const regex = /\S+@\S+\.\S+/;
@@ -46,6 +50,11 @@ const Login = () => {
             if (isEmail === null)
                 return showAlert('Digite um e-mail valido', 5000);
         } else if (!email || !password) {
+            setIsLoading(false)
+            showAlert('Por favor, preencha todos os campos!', 5000);
+        } 
+        if (password === '' || password === null) {
+            setIsLoading(false)
             showAlert('Por favor, preencha todos os campos!', 5000);
         }
 
@@ -74,8 +83,8 @@ const Login = () => {
             if (response !== undefined) {
                 const responseToJson = await response.json();
 
-                if (responseToJson.status === false) {
-                    showAlert(responseToJson, 5000)
+                if (responseToJson?.status === false) {
+                    return showAlert('Usuário ou senha incorretos', 5000)
                 }
 
                 if (responseToJson) {
@@ -91,6 +100,7 @@ const Login = () => {
 
             {isLoginActive ?
                 <div className={isLoginActive ? "container-login" : "container-login animation-close"}>
+                    { isLoading ? <Loading/> : null }
                     <div className="container-login-box">
 
                         <div className="container-login-top">

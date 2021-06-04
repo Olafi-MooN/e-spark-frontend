@@ -49,6 +49,13 @@
     justify-content: center;
 }
 
+.filial {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .filial p {
     padding-left: 20px;
 }

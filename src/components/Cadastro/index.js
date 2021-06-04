@@ -9,6 +9,7 @@ import { AuthContext } from '../../providers/auth';
 import closeIcon from '../../images/close.svg';
 
 import './cadastro.css';
+import { Loading } from '../Loading';
 
 const Cadastro = () => {
     const [first_name, setFirst_name] = useState();
@@ -18,6 +19,7 @@ const Cadastro = () => {
 
     const [isAlert, setAlert] = useState();
     const [textAlert, setTextAlert] = useState('');
+    const [isLoading, setIsloading] = useState(false);
 
     const { isCadastroActive, setIsCadastroActive, setIsLoginActive, setToken} = useContext(AuthContext);
 
@@ -36,6 +38,7 @@ const Cadastro = () => {
 
     function showAlert(text, time) {
         setTextAlert(text);
+        setIsloading(false);
         setAlert(true);
         setTimeout(() => {
             setAlert(false);
@@ -44,9 +47,10 @@ const Cadastro = () => {
 
     async function handleClickBtnRegister(e) {
         e.preventDefault();
+        setIsloading(true)
 
         if (!first_name || !last_name || !email || !password) {
-            showAlert('Preencha todos os campos', 5000)
+            return showAlert('Preencha todos os campos', 5000)
         }
 
         let hasResponse = true;
@@ -90,6 +94,7 @@ const Cadastro = () => {
         <>
             {isCadastroActive ?
                 <div className={"container-login"}>
+                    {isLoading ? <Loading/> : null }
                     <div className="container-login-box">
 
                         <div className="container-login-top">
