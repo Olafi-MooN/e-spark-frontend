@@ -1,80 +1,61 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { HeaderMenu } from "../../components/HeaderMenu/";
 import { LeftMenu } from "../../components/LeftMenu/";
+import { Loading } from "../../components/Loading";
 import { Footer } from "../../components/Footer/";
 import "./historyuser.css";
 
+
 const Historico = () => {
+
+    const [historyDate, setHistoryDate] = useState();
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const user = JSON.parse(localStorage.getItem('user'));
+
+        fetch(`https://e-spark-back.herokuapp.com/userscars/${user.id}`)
+            .then(response => response.json())
+            .then(result => {
+                setHistoryDate(result);
+                console.log(result.usercars)
+                setIsLoading(false);
+            });
+    }, []);
+
     return (
         <>
-            <HeaderMenu />
-            <LeftMenu />
             <div className="container-historico">
+                {isLoading && <Loading />}
+                <HeaderMenu />
+                <LeftMenu />
                 <h1> Histórico de Locações</h1>
+
                 <table>
-                    <tr>
-                        <th>ID</th>
-                        <th>Carro</th>
-                        <th>Data</th>
-                    </tr>
-                    <tr>
-                        <td>
-                            {" "}
-                            <a href="/">20210010</a>{" "}
-                        </td>
-                        <td>Chevrolet Bolt</td>
-                        <td>11/11/2020</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="/">20210011</a>
-                        </td>
-                        <td>Nissan Leaf</td>
-                        <td>10/02/2019</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="/">20210013</a>
-                        </td>
-                        <td>Tesla Model 3</td>
-                        <td>20/05/2020</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="/">20210015</a>
-                        </td>
-                        <td>Porsche Taycan </td>
-                        <td>15/04/2020</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="/">20210014</a>
-                        </td>
-                        <td>Audi E-Tron</td>
-                        <td>10/02/2019</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="/">20210022</a>
-                        </td>
-                        <td>BMW i3</td>
-                        <td>20/09/2020</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="/">20210078</a>
-                        </td>
-                        <td>Renault Zoe</td>
-                        <td>05/02/2021</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="/">20210201</a>
-                        </td>
-                        <td>Jaguar i-Pace</td>
-                        <td>05/07/2020</td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Carro</th>
+                            <th>Data</th>
+                        </tr>
+                    </thead>
+                    {historyDate?.usercars.map((item, index) => {
+                        return (
+                            <>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            {item?.id_cars}{item.id_users}{item.id}
+                                        </td>
+                                        <td>{item?.Users_car?.name_car.replaceAll('_', ' ')}</td>
+                                        <td>{item?.createdAt}</td>
+                                    </tr>
+                                </tbody>
+                            </>
+                        )
+                    })}
+
                 </table>
             </div>
 

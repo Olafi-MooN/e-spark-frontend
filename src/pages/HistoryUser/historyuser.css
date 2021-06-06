@@ -1,3 +1,6 @@
+.container-historico {
+  background-color: var(--background-color-home);
+}
 h1 {
     text-align: center;
     padding: 7mm;
@@ -16,10 +19,11 @@ h1 {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
+    color: var(--text-color)
   }
   
   tr:nth-child(even) {
-    background-color: #e2d7f5;
+    background-color: var(--background-item-card-title-default-hover);
     text-decoration-color: #dddddd;
   }
   footer {

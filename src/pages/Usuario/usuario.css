@@ -1,100 +1,142 @@
-.container-dados-h1 {
-  text-align: center;
-  color: var(--text-color);
-  padding-top: 14mm;
-}
-
-.container-dados {
-  background-color: var(--background-color-home);
-}
-
-.container-dados main {
-  padding: 80px 0px 120px;
-}
-
-.container-dados main {
-  width: 100%;
-  min-height: 700px;
-  margin: 0 auto;
+.containerProfile {
+  display: flex;
   justify-content: center;
   align-items: center;
+  background-color: var(--background-color-home);
+  min-height: 90vh;
 }
 
-.form-dados {
-  margin-left: 390px;
-  margin-top: 50px;
+.mainProfile {
+  align-items: center;
   display: flex;
+  flex-direction: row;
+  background-color: var(--background-item-card-title-default-hover);
+  width: 90%;
+  height: 80vh;
+  padding: 20px;
+  border-radius: 20px;
 }
 
-.label {
+.leftProfile {
+  min-width:  250px;
+  width: 40%;
+  max-width: 350px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+
+.leftProfile img {
+  border-radius: 50%;
+  height: 180px;
+  width: 180px;
+  object-fit: cover;
+}
+
+.leftProfile .username {
   color: var(--text-color);
-  padding: 2mm;
+  margin-top: 20px;
+  font-size: 2rem;
 }
 
-.input,
-.select {
-  border-radius: 5px;
-  outline: none;
-  background: #e2d7f5;
+.rightProfile {
+  height: 90%;
+  width: 100%;
+  padding: 0 40px;
+  border-left: 2px solid rgba(255, 255, 255, 0.467);
+  position: relative;
+}
+
+.rightProfile .leftTitle {
+  color: var(--text-color);
+  font-size: 2rem;
+}
+
+.fildsetProfile {
+  border-radius: 7px;
+  width: 100%;
+}
+
+.fildsetProfile.first {
+  width: 40%;
+}
+.fildsetProfile.last {
+  width: 55%;
+}
+
+.titleInputProfile {
+  color: var(--text-color)
+}
+
+.inputProfile {
+  width: 100%;
+  border: none;
   height: 30px;
-  width: 200px;
-  padding: 2px 5px;
+  background-color: transparent;
+  color: var(--text-color);
+  padding-left: 22px;
 }
 
-.input-long {
-  border-radius: 5px;
+.inputProfile:focus {
   outline: none;
-  background: #e2d7f5;
-  height: 30px;
-  width: 400px;
-  padding: 2px 5px;
 }
 
-.submit,
-.reset {
+.rowProfileInput {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.fildsetProfile.default {
+  margin-top: 20px;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: flex-end;
+  width: calc(100% - 80px);
+}
+
+.btnBottom {
+  width: 20%;
+  height: 40px;
   background-color: var(--background-color-menu);
   border: none;
-  color: white;
-  padding: 5px 5px;
-  text-align: center;
-  font-size: 12px;
-  margin: 4px 2px;
+  min-width: 150px;
+  border-radius: 7px;
   cursor: pointer;
-  border-style: initial;
-  border-radius: 5px;
+  font-size: 1rem;
 }
 
-.name,
-.mail {
-  width: 400px;
+.btnBottom.update {
+  margin-right: 20px;
 }
 
-#coluna-1 {
-  width: 50%;
-  float: left;
-  display: flex;
-  flex-wrap: wrap;
+.btnBottom.delete {
+  background-color: brown;
 }
 
-#coluna-2 {
-  width: 50%;
-  float: right;
-  display: flex;
-  flex-wrap: wrap;
-}
+@media (max-width: 1000px){
+  .mainProfile {
+    flex-direction: column;
+    min-height: 700px;
+    margin: 30px 0;
+  }
 
-.break {
-  flex-basis: 100%;
-  height: 0;
-  padding: 5mm;
-}
+  .rightProfile {
+    border: none;
+  }
 
-.break2 {
-  flex-basis: 100%;
-  height: 0;
-  padding: 1mm;
-}
+  .leftTitle {
+    margin-top: 50px;
+    font-size: 1.5rem;
+    text-align: center;
+  }
 
-.dataNasc {
-  padding: 0mm;
+  .bottom {
+    justify-content: center;
+  }
 }
