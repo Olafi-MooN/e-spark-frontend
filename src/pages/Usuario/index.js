@@ -3,8 +3,7 @@ import { AuthContext } from "../../providers/auth";
 import { HeaderMenu } from "../../components/HeaderMenu";
 import { LeftMenu } from "../../components/LeftMenu";
 import { Footer } from "../../components/Footer";
-import { Cadastro } from "../../components/Cadastro";
-import { Login } from "../../components/Login";
+
 import "./usuario.css";
 
 const Usuario = () => {
@@ -18,6 +17,7 @@ const Usuario = () => {
           <div className="leftProfile">
             <img src="https://github.com/Olafi-Moon.png" alt="" />
             <h3 className="username">Alef Santos</h3>
+            <button className="btnBottom history">Ver historico</button>
           </div>
           <div className="rightProfile">
             <h2 className="leftTitle">Perfil</h2>
