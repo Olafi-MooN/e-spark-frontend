@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import { AuthContext } from '../../providers/auth';
 import { PaymentContext } from '../../providers/payment';
 
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import { HeaderMenu } from '../../components/HeaderMenu/';
 import { Cadastro } from '../../components/Cadastro/';
@@ -18,14 +18,54 @@ import { FaDollarSign } from 'react-icons/fa';
 import { FaHome } from 'react-icons/fa';
 
 import './checkout.css';
+import { Loading } from '../../components/Loading';
 
 const Checkout = () => {
 
     const { isLoginActive, isCadastroActive } = useContext(AuthContext);
     const { plan, aboutCar, creditCard } = useContext(PaymentContext);
+    const [isLoading, setIsLoading ] = useState(false);
+    const history = useHistory();
+
+    async function handleConfirmPaymnent() {
+        let hasResponse = true;
+
+        const user = JSON.parse(localStorage.getItem('user'));
+        setIsLoading(true);
+        const response = await fetch('https://e-spark-back.herokuapp.com/userscars', {
+            method: 'POST',
+            mode: 'cors',
+            cache: 'no-cache',
+            credentials: 'same-origin',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            redirect: 'follow',
+            referrerPolicy: 'no-referrer',
+            body: JSON.stringify({
+                user_id: user.id,
+	            car_id: aboutCar.id
+            })
+        }).catch(e => {
+            hasResponse = false;
+        })
+
+        if ( hasResponse === false) {
+            return alert('Erro ao conectar com o banco de dados (status 500)');
+        } 
+
+        const result = await response.json();
+        
+        if (result?.status === true) {
+            return history.push('/payment');
+        } else {
+            alert('Ocorreu um erro interno');
+        }
+    }
 
     return (
         <div className="container-home">
+            {isLoading && <Loading />} 
             <HeaderMenu />
             <LeftMenu />
 
@@ -128,7 +168,7 @@ const Checkout = () => {
 
                     <div className="checkout-container-botoes">
                         <Link to="/"><button>Inicio</button></Link>
-                        <Link to="/Payment"><button>Continuar</button></Link>
+                        <Link><button onClick={handleConfirmPaymnent}>Confirmar pagamento</button></Link>
                     </div>
                 </div>
             </main>

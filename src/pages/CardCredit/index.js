@@ -10,12 +10,13 @@ import chipIcon from '../../images/chip.svg';
 import './cardcredit.css';
 
 const CardCredit = () => {
-    const { user, setCreditCard } = useContext(PaymentContext);
+    const { setCreditCard } = useContext(PaymentContext);
     const inputRef = useRef(null);
     const history = useHistory();
     const [number, setNumber] = useState(0);
     const [numberTrue, setNumberTrue] = useState(0);
     const [isNumber, setIsNumber] = useState(false);
+    const user = JSON.parse(localStorage.getItem('user'));
 
     useEffect(() => {
         var regex = /^[0-9.]+$/;

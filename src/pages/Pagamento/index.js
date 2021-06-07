@@ -13,11 +13,14 @@ import { FaHome } from 'react-icons/fa';
 import CarroIcon from '../../images/carro-eletrico.png';
 
 import './pagamento.css';
+import { useHistory } from 'react-router';
 
 const Pagamento = () => {
 
     const { isLoginActive, isCadastroActive } = useContext(AuthContext);
-    const { user } = useContext(PaymentContext);
+    const history = useHistory();
+
+    const user = JSON.parse(localStorage.getItem('user'));
 
    return (
         <div className="container-home">
@@ -44,7 +47,7 @@ const Pagamento = () => {
                 </div>
 
                 <div className="pagamento-container-botoes">
-                        <button className="btn-end">Ver rota</button>
+                        <button className="btn-end" onClick={() => history.push('/historyUser')}>Ver historico</button>
                 </div>
             </div>
             </main>

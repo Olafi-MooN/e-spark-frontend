@@ -59,14 +59,34 @@ const CardCars = ({
     }
 
     function handleClickAlugar() {
-        return user === null ? setIsLoginActive(true) : history.push('/plan');
+        setAboutCar({
+            id,
+            title,
+            urlImg,
+            urlImgD,
+            description,
+            brand,
+            model,
+            category,
+            autonomy,
+            maximum_speed,
+            acceleration,
+            power,
+            transmission,
+            occupants,
+            capacity,
+            typeCar,
+            quantityInStock,
+        })
+
+        localStorage.getItem('user') === null ? setIsLoginActive(true) :  history.push('/plan');
     }
 
     return (
         <>
-        <div className={"container-card-cars " + typeCar} key={id}>
+        <div className={"container-card-cars " + "premium"} key={id}>
             <div className="title-car">
-                <p className={"namecar " + typeCar}>{title}</p>
+                <p className={"namecar " + 'premium'}>{title}</p>
             </div>
             <div className="image-car">
                 <img src={urlImg || exempleCarIcon} alt="carro" />
@@ -75,8 +95,8 @@ const CardCars = ({
                 {description}
             </div>
             <div className="footer-card-car">
-                <button className={typeCar} /* id={id}  */onClick={handleClicAbout}>Sobre</button>
-                <button className={typeCar} /* id={id} */ onClick={handleClickAlugar}>Alugar</button>
+                <button className={'premium'} /* id={id}  */onClick={handleClicAbout}>Sobre</button>
+                <button className={'premium'} /* id={id} */ onClick={handleClickAlugar}>Alugar</button>
             </div>
         </div>
         {isLoginActive? <Login/> : null}

@@ -11,11 +11,9 @@ import { LeftMenu } from '../../components/LeftMenu/';
 import { CardCars } from '../../components/CardCars/';
 import { Footer } from '../../components/Footer/'
 import { Login } from '../../components/Login/';
-
-
-import './home.css';
 import { Loading } from '../../components/Loading';
 
+import './home.css';
 
 const Home = () => {
 
