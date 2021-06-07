@@ -12,10 +12,11 @@
   flex-direction: row;
   background-color: var(--background-item-card-title-default-hover);
   width: 90%;
-  height: 80vh;
+  min-height: 80vh;
   padding: 20px;
   padding-left: 0;
   border-radius: 20px;
+  margin: 40px 0 ;
 }
 
 .leftProfile {
@@ -43,6 +44,7 @@
 
 .rightProfile {
   height: 90%;
+  min-height: 70vh;
   width: 100%;
   padding: 0 40px;
   border-left: 2px solid rgba(255, 255, 255, 0.467);
@@ -120,8 +122,13 @@
   text-decoration: underline;
 }
 
+.btnBottom.history.photo {
+  margin-top: 5px;
+}
+
 .btnBottom.update {
   margin-right: 20px;
+  background-color: #6F48C9;
 }
 
 .btnBottom.delete {

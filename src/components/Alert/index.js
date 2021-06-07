@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 
 import './alert.css';
 
-const Alert = ({ position, textAlert }) => {
+const Alert = ({ position, textAlert, color }) => {
 
     /* 
         Position aceita os seguintes valores:
@@ -26,6 +26,7 @@ const Alert = ({ position, textAlert }) => {
             {
                 'display': `${isActive}`,
                 'justify-content': 'center',
+                'background-color': `${color}`
             }
         }  >
             <div className="close-alert-information" onClick={handleClickCLoseAlert} >
