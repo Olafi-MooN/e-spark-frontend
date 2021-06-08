@@ -19,19 +19,25 @@ const Usuario = () => {
   const [imagem, setImagem] = useState();
   const [imagemProfile, setImagemProfile] = useState('https://illumesense.com/resources/illumesense/style/img/website/profile-picture-blanks/male-profile.jpg');
 
-  const [isAlert, setIsAlert ] = useState(false);
-  const [textAlert, setTextAlert ] = useState(false);
-  const [colorAlert, setColorAlert ] = useState(false);
+  const [isAlert, setIsAlert] = useState(false);
+  const [textAlert, setTextAlert] = useState(false);
+  const [colorAlert, setColorAlert] = useState(false);
 
   const [isLoading, setIsLoading] = useState(true);
-  
+
+  const [firstname, setFirstname] = useState(null);
+  const [lastname, setLastname] = useState(null);
+  const [email, setEmail] = useState(null);
+
+  const [user] = useState(JSON.parse(localStorage.getItem('user')));
+
   function showAlert(text, time) {
     setTextAlert(text);
     setIsAlert(true);
     setTimeout(() => {
-        setIsAlert(false);
+      setIsAlert(false);
     }, time)
-}
+  }
 
   function saveImageProfile() {
     localStorage.setItem('userImage', imagem);
@@ -47,7 +53,6 @@ const Usuario = () => {
       .then(response => response.json())
       .then(result => {
         setHistoryDate(result);
-        console.log(result.usercars)
         setIsLoading(false);
       });
   }, [showHistory]);
@@ -55,7 +60,8 @@ const Usuario = () => {
   useEffect(() => {
     var profilePhoto = localStorage.getItem('userImage');
 
-    profilePhoto !== '' ? setImagemProfile(profilePhoto) : <></> ;
+    profilePhoto !== '' ? setImagemProfile(profilePhoto) : <></>;
+    console.log(user);
   }, [])
 
   return (
@@ -99,20 +105,32 @@ const Usuario = () => {
                 <div className="rowProfileInput">
                   <fieldset className="fildsetProfile first">
                     <legend className="titleInputProfile">Primeiro nome</legend>
-                    <input type="text" className="inputProfile first" placeholder="Alef" />
+                    <input
+                      type="text"
+                      className="inputProfile first"
+                      value={firstname ?? user.first_name}
+                      onChange={(e) => setFirstname(e.target.value)} />
                   </fieldset>
                   <fieldset className="fildsetProfile last">
                     <legend className="titleInputProfile">Segundo nome</legend>
-                    <input type="text" className="inputProfile" placeholder="Santos Soares" />
+                    <input
+                      type="text"
+                      className="inputProfile"
+                      value={lastname ?? user.last_name}
+                      onChange={(e) => setLastname(e.target.value)} />
                   </fieldset>
                 </div>
                 <fieldset className="fildsetProfile default">
                   <legend className="titleInputProfile">E-mail</legend>
-                  <input type="text" className="inputProfile" placeholder="alefmaster@gmail.com" />
+                  <input
+                    type="text"
+                    className="inputProfile"
+                    value={email ?? user.email}
+                    onChange={(e) => setEmail(e.target.value)} />
                 </fieldset>
                 <div className="bottom">
                   <button className="btnBottom update">Atualizar</button>
-                  <button className="btnBottom delete">Deletar</button>
+                  <button className="btnBottom delete">Deletar conta</button>
                 </div>
               </>
             }
