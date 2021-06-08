@@ -10,8 +10,8 @@ import CompanhiaIcon from '../../images/companhia.svg';
 
 const HeaderMenu = () => {
     const switchClick = useRef(null);
-    const [ hamburguerClick, setHamburguerClick ] = useState(false);
-    const [ widthScreen ] = useState(window.innerWidth);
+    const [hamburguerClick, setHamburguerClick] = useState(false);
+    const [widthScreen] = useState(window.innerWidth);
 
     function setColorTheme(varName, yourColor) {
         document.documentElement.style.setProperty(varName, yourColor);
@@ -88,30 +88,29 @@ const HeaderMenu = () => {
                     {/* <li className="ul-li-header-menu">
                         <SearchBar />
                     </li> */}
-                    {
-                        widthScreen > 1120 ?
-                            <li className="ul-li-header-menu">
-                                <ul className="ul-item">
-                                     <li className="li-item">
-                                        <img src={ContatoIcon} alt="" />
-                                        <p className="header-p">Entre em contato</p>
-                                    </li>
-                                    <li className="li-item">
-                                        <img src={CompanhiaIcon} alt="" />
-                                        <p className="header-p">Quem somos</p>
-                                    </li>
-                                    <li className="li-item">
-                                        <label className="switch">
-                                            <input type="checkbox" ref={switchClick} onClick={handleChangerTheme} />
-                                            <span className="slider round"></span>
-                                        </label>
-                                    </li>
-                                    <li className="li-item li-item-account">
-                                        <Logout />
-                                    </li>
-                                </ul>
-                            </li> :
-                            <li className="ul-li-header-menu-hamburgue" onClick={handleHamburguerClick}>
+
+                    <li className="ul-li-header-menu fullscreen">
+                        <ul className="ul-item">
+                            <li className="li-item">
+                                <img src={ContatoIcon} alt="" />
+                                <p className="header-p">Entre em contato</p>
+                            </li>
+                            <li className="li-item">
+                                <img src={CompanhiaIcon} alt="" />
+                                <p className="header-p">Quem somos</p>
+                            </li>
+                            <li className="li-item">
+                                <label className="switch">
+                                    <input type="checkbox" ref={switchClick} onClick={handleChangerTheme} />
+                                    <span className="slider round"></span>
+                                </label>
+                            </li>
+                            <li className="li-item li-item-account">
+                                <Logout />
+                            </li>
+                        </ul>
+                    </li>
+                    <li className="ul-li-header-menu-hamburgue" onClick={handleHamburguerClick}>
                                 <ul className="ul-item-hamburgue">
                                     <li className="li-item menu">
                                         <span></span>
@@ -120,7 +119,6 @@ const HeaderMenu = () => {
                                     </li>
                                 </ul>
                             </li>
-                    }
                 </ul>
             </nav>
             {

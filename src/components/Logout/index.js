@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import UserIcon from '../../images/user.svg';
@@ -7,6 +7,7 @@ import { AuthContext } from '../../providers/auth';
 const Logout = () => {
     const { setIsLoginActive, isCadastroActive, setIsCadastroActive, user, setUser } = useContext(AuthContext);
     const history = useHistory();
+    const [ imageProfile ] = useState(localStorage.getItem('userImage'));
 
     function handleClickJoin() {
         setIsLoginActive(true);
@@ -33,11 +34,11 @@ const Logout = () => {
     return (
         <>
             <label htmlFor="account-checkbox" className="user-icon-label">
-                <img src={UserIcon} alt="" />
+                <img src={ imageProfile ?? UserIcon} alt="profile" className="image-profile-header"/>
             </label>
             {(user !== null || userStorage)  ?
                 <>
-                    <input type="checkbox" id="account-checkbox" hidden />
+                    <input type="checkbox" id="account-checkbox"  />
                     <label htmlFor="account-checkbox" className="label-entrar"> { user?.email ?? userStorage?.email } </ label>
                     <ul>
                         <li onClick={handleClickUser}><p>Perfil</p></li>
