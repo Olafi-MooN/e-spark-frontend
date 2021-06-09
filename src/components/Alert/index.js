@@ -25,8 +25,8 @@ const Alert = ({ position, textAlert, color }) => {
         <div className={`container-alert ${position}`} ref={closeAlert} style={
             {
                 'display': `${isActive}`,
-                'justify-content': 'center',
-                'background-color': `${color}`
+                'justifyContent': 'center',
+                'backgroundColor': `${color}`
             }
         }  >
             <div className="close-alert-information" onClick={handleClickCLoseAlert} >

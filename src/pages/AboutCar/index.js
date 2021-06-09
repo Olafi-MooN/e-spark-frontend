@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 import { HeaderMenu } from '../../components/HeaderMenu';
@@ -13,8 +13,9 @@ import { AboutCarContext } from '../../providers/cards';
 import './aboutcar.css';
 
 const AboutCar = () => {
-    const { isLoginActive, isCadastroActive, setIsLoginActive, user } = useContext(AuthContext);
+    const { isLoginActive, isCadastroActive, setIsLoginActive} = useContext(AuthContext);
     const { aboutCar } = useContext(AboutCarContext);
+    const [user] = useState(JSON.stringify(localStorage.getItem('user')));
     const history = useHistory();
 
     function handleToTop() {

@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { HeaderMenu } from "../../components/HeaderMenu";
 import { LeftMenu } from "../../components/LeftMenu";
 import { Footer } from "../../components/Footer";
 import { Loading } from "../../components/Loading";
 import { Alert } from "../../components/Alert";
+
+import UserIcon from '../../images/user.svg';
 
 
 import "./usuario.css";
@@ -17,7 +19,7 @@ const Usuario = () => {
   const [showPhoto, setShowPhoto] = useState(false);
 
   const [imagem, setImagem] = useState();
-  const [imagemProfile, setImagemProfile] = useState('https://illumesense.com/resources/illumesense/style/img/website/profile-picture-blanks/male-profile.jpg');
+  const [imagemProfile, setImagemProfile] = useState(null);
 
   const [isAlert, setIsAlert] = useState(false);
   const [textAlert, setTextAlert] = useState(false);
@@ -25,13 +27,16 @@ const Usuario = () => {
 
   const [isLoading, setIsLoading] = useState(true);
 
-  const [firstname, setFirstname] = useState(null);
-  const [lastname, setLastname] = useState(null);
-  const [email, setEmail] = useState(null);
+  const getFirstname = useRef(null);
+  const getLastname = useRef(null);
+  const getEmail = useRef(null);
+  const oldPassword = useRef(null);
+  const newPassword = useRef(null);
 
-  const [user] = useState(JSON.parse(localStorage.getItem('user')));
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
 
-  function showAlert(text, time) {
+  function showAlert(text, time, color) {
+    setColorAlert(color);
     setTextAlert(text);
     setIsAlert(true);
     setTimeout(() => {
@@ -40,28 +45,89 @@ const Usuario = () => {
   }
 
   function saveImageProfile() {
-    localStorage.setItem('userImage', imagem);
-    setColorAlert('green');
+    localStorage.setItem('userImage', imagem);;
     setImagemProfile(imagem);
-    return showAlert('Imagem salva com sucesso!', 6000);
+    return showAlert('Imagem salva com sucesso!', 6000, 'green');
+  }
+
+  async function updatePassword() {
+
+    if(!oldPassword.current.value || !newPassword.current.value) {
+      return showAlert('Preencha todos os campos!', 6000, '#B8AB00')
+    }
+
+    const updatePassword = await fetch(`https://e-spark-back.herokuapp.com/users/${user.id}/password`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        password: oldPassword.current.value,
+        newPassword: newPassword.current.value
+      })
+    });
+
+    const result = await updatePassword.json();
+
+    if (result?.user[0] === 0) {
+      console.log(result)
+      return showAlert('Ocorreu um erro ao atualizar a senha', 6000, 'red');
+    }
+
+    return showAlert('Senha atualizada com sucesso!', 6000, 'green');
+  }
+
+  async function updateProfile() {
+    const updateProfile = await fetch(`https://e-spark-back.herokuapp.com/users/${user.id}/profile`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        first_name: getFirstname.current.value,
+        last_name: getLastname.current.value,
+        email: getEmail.current.value,
+      })
+    });
+
+    const result = await updateProfile.json();
+
+    console.log(result);
+
+    if (result?.user[0] === 0) {
+      return showAlert('Ocorreu um erro ao atualizar o perfil', 6000, 'red');
+    }
+
+    if (result?.user[0] === 1) {
+      const updateUser = {
+        email: getEmail.current.value,
+        first_name: getFirstname.current.value,
+        iat: 162310794,
+        id: user.id,
+        last_name: getLastname.current.value,
+      }
+
+      localStorage.setItem('user', JSON.stringify(updateUser));
+      setUser(JSON.parse(localStorage.getItem('user')));
+
+      return showAlert('Usuário atualizado com sucesso!', 10000, 'green');
+    }
+
   }
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('user'));
-
     fetch(`https://e-spark-back.herokuapp.com/userscars/${user.id}`)
       .then(response => response.json())
       .then(result => {
         setHistoryDate(result);
         setIsLoading(false);
       });
-  }, [showHistory]);
+  }, [showHistory, user.id]);
 
   useEffect(() => {
     var profilePhoto = localStorage.getItem('userImage');
 
-    profilePhoto !== '' ? setImagemProfile(profilePhoto) : <></>;
-    console.log(user);
+    profilePhoto ? setImagemProfile(profilePhoto) : <></>;
   }, [])
 
   return (
@@ -71,14 +137,14 @@ const Usuario = () => {
       <div className="containerProfile">
         <div className="mainProfile">
           <div className="leftProfile">
-            <img src={imagemProfile} alt="" />
+            <img src={imagemProfile ?? UserIcon} alt="" />
             <button className="btnBottom history photo" onClick={() => {
               setShowPhoto(true);
               setShowProfile(false);
               setShowPassword(false);
               setShowHistory(false);
             }}>Alterar</button>
-            <h3 className="username">Alef Santos</h3>
+            <h3 className="username">{user.first_name ?? 'username'}</h3>
             <button className="btnBottom history" onClick={() => {
               setShowProfile(true);
               setShowPassword(false);
@@ -108,16 +174,16 @@ const Usuario = () => {
                     <input
                       type="text"
                       className="inputProfile first"
-                      value={firstname ?? user.first_name}
-                      onChange={(e) => setFirstname(e.target.value)} />
+                      defaultValue={user.first_name}
+                      ref={getFirstname} />
                   </fieldset>
                   <fieldset className="fildsetProfile last">
                     <legend className="titleInputProfile">Segundo nome</legend>
                     <input
                       type="text"
                       className="inputProfile"
-                      value={lastname ?? user.last_name}
-                      onChange={(e) => setLastname(e.target.value)} />
+                      defaultValue={user.last_name}
+                      ref={getLastname} />
                   </fieldset>
                 </div>
                 <fieldset className="fildsetProfile default">
@@ -125,11 +191,11 @@ const Usuario = () => {
                   <input
                     type="text"
                     className="inputProfile"
-                    value={email ?? user.email}
-                    onChange={(e) => setEmail(e.target.value)} />
+                    defaultValue={user.email}
+                    ref={getEmail} />
                 </fieldset>
                 <div className="bottom">
-                  <button className="btnBottom update">Atualizar</button>
+                  <button className="btnBottom update" onClick={updateProfile}>Atualizar</button>
                   <button className="btnBottom delete">Deletar conta</button>
                 </div>
               </>
@@ -139,15 +205,22 @@ const Usuario = () => {
               <h2 className="leftTitle">Alterar senha</h2>
               <fieldset className="fildsetProfile default">
                 <legend className="titleInputProfile">Senha</legend>
-                <input type="text" className="inputProfile" placeholder="Digite a sua senha atual" />
+                <input
+                  type="text"
+                  className="inputProfile"
+                  ref={oldPassword}
+                  placeholder="Digite a sua senha atual" />
               </fieldset>
               <fieldset className="fildsetProfile default">
                 <legend className="titleInputProfile">Nova Senha</legend>
-                <input type="text" className="inputProfile" placeholder="Digite a nova senha" />
+                <input
+                  type="text"
+                  className="inputProfile"
+                  ref={newPassword}
+                  placeholder="Digite a nova senha" />
               </fieldset>
               <div className="bottom">
-                <button className="btnBottom update">Atualizar</button>
-                <button className="btnBottom delete">Deletar</button>
+                <button className="btnBottom update password" onClick={updatePassword}>Atualizar</button>
               </div>
             </>}
 

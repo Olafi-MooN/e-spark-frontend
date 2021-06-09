@@ -91,6 +91,61 @@
     margin-right: 20px;
 }
 
+.ul-li-header-menu .ul-item .li-item.profile {
+    background-color: var(--background-color-home);
+    height: auto;
+    position: relative;
+      padding: 25px;
+      margin-top: 30px;
+      margin-left: 10%;
+      width: 105%;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      cursor: default;
+}
+
+.profilemain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ul-li-header-menu .ul-item .li-item.profile .profilemain .imgProfile{
+    margin: 0;
+    position: absolute;
+    right: 20px;
+    width: 55px;
+    height: 55px;
+
+}
+
+.header-p.user {
+    font-size: 18px;
+    text-transform: capitalize;
+    cursor:  default;
+}
+
+.li-item.profile .showprofile {
+    width: 100%;
+    text-align: right;
+    font-size: 14px;
+    color: var(--background-roxo) ;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all ease-in-out 500ms;
+}
+
+.li-item.profile .showprofile:hover {
+    text-decoration: underline;
+}
+
+.li-item.firtitem {
+    margin-top: 30px;
+}
+
 .ul-li-header-menu .ul-item .li-item .user-icon-label {
     display: flex;
     align-items: center;
@@ -219,6 +274,7 @@
       justify-content: center;
       align-items: center;
       cursor: pointer;
+      margin-right: 35px;
   }
 
   .li-item.menu:hover span:nth-child(1){
@@ -234,12 +290,12 @@
   .li-item.menu span {
       width: 90%;
       background: var(--text-color);
-      height: 5px;
+      height: 7%;
       cursor: pointer;
       transition: all ease-in-out 300ms;
       border-radius: 7px;
-      margin-right: 50px;
-      margin-top: 10px;
+
+      margin-top: 8px;
   }
 
   .li-item.menu span:first-child {
@@ -248,9 +304,14 @@
 
   .ul-item.responsive,
   .ul-li-header-menu.responsive {
+      z-index: 2000;
+      position: absolute;
       display: flex;
-      width: 100%;
+      width: 80%;
+      min-height: 90vh;
       flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
       flex-wrap: nowrap;
       background-color: var(--background-color-menu);
   }
@@ -258,17 +319,33 @@
   .ul-li-header-menu.responsive li {
       width: 100%;
       height: 50px;
-      justify-content:center;
+      justify-content:flex-start;
       margin-left: 20px;
+      color:white;
   }
 
   .ul-li-header-menu.responsive li label + p {
       margin-left: 20px;
   }
 
+  .li-item.li-item-account.logout {
+      position: absolute;
+      bottom: 0;
+      background-color: rgb(130, 20, 20);
+      margin-right: 0px;
+      padding: 0px;
+      margin: 0px;
+      width: 125%;
+  }
+  .li-item.li-item-account.logout p {
+      margin-left: 20px;
+  }
 
 @media (max-width: 1120px) {
 
+    .ul-li-header-menu .ul-item li .header-p {
+        color: white;
+    }
     .li-item.li-item-account input:checked ~ ul {
         width: 100%;
         left: -10px;

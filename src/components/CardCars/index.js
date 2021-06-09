@@ -30,7 +30,7 @@ const CardCars = ({
 
 }) => {
     const { setAboutCar } = useContext(AboutCarContext);
-    const { user, isLoginActive, setIsLoginActive } = useContext(AuthContext);
+    const { isLoginActive, setIsLoginActive } = useContext(AuthContext);
     const history = useHistory();
 
     function handleClicAbout() {
@@ -84,9 +84,9 @@ const CardCars = ({
 
     return (
         <>
-        <div className={"container-card-cars " + "premium"} key={id}>
+        <div className={"container-card-cars premium"} key={id}>
             <div className="title-car">
-                <p className={"namecar " + 'premium'}>{title}</p>
+                <p className={"namecar premium"}>{title}</p>
             </div>
             <div className="image-car">
                 <img src={urlImg || exempleCarIcon} alt="carro" />

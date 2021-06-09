@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 
 import { AuthContext } from '../../providers/auth';
-import { PaymentContext } from '../../providers/payment';
 
 import { HeaderMenu } from '../../components/HeaderMenu/';
 import { Cadastro } from '../../components/Cadastro/';
