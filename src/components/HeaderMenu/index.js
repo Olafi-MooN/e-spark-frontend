@@ -1,5 +1,6 @@
-import React, { useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useRef, useState, useContext, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { AuthContext } from '../../providers/auth';
 
 import { Logout } from '../Logout/index';
 import './headermenu.css';
@@ -7,11 +8,16 @@ import './headermenu.css';
 import LogoIcon from '../../images/logo.png';
 import ContatoIcon from '../../images/contato.svg';
 import CompanhiaIcon from '../../images/companhia.svg';
+import UserIcon from '../../images/user.svg';
+
 
 const HeaderMenu = () => {
     const switchClick = useRef(null);
     const [hamburguerClick, setHamburguerClick] = useState(false);
-    const [widthScreen] = useState(window.innerWidth);
+    const [imageProfile] = useState(localStorage.getItem('userImage'));
+    const [userStorage, setUserStorage] = useState(JSON.parse(localStorage.getItem('user')));
+    const { setIsLoginActive, isCadastroActive, setIsCadastroActive, setUser } = useContext(AuthContext);
+    const history = useHistory();
 
     function setColorTheme(varName, yourColor) {
         document.documentElement.style.setProperty(varName, yourColor);
@@ -61,6 +67,30 @@ const HeaderMenu = () => {
         })
     }
 
+    function handleClickLogin() {
+        setHamburguerClick(false)
+        setIsLoginActive(true);
+    }
+
+    function handleClickUser() {
+        setHamburguerClick(false);
+        startScroll();
+        history.push('/usuario')
+    }
+
+    function handleClickCreateAccount() {
+        setHamburguerClick(false);
+        setIsCadastroActive(true);
+        console.log(isCadastroActive);
+    }
+
+    function handleClickLogout() {
+        setHamburguerClick(false);
+        setUser(null);
+        localStorage.clear();
+        history.push('/');
+    }
+
     function handleChangerTheme() {
         if (switchClick.current.checked) {
             lightTheme();
@@ -69,11 +99,29 @@ const HeaderMenu = () => {
         }
     }
 
+    function stopScroll() {
+        setHamburguerClick(true);
+        window.onscroll = function () {
+            window.scrollTo(0, 0);
+        }
+    }
+
+    function startScroll() {
+        setHamburguerClick(false);
+        window.onscroll = true;
+    }
+
     function handleHamburguerClick() {
         hamburguerClick ?
-            setHamburguerClick(false) :
-            setHamburguerClick(true);
+            startScroll()
+            :
+            stopScroll();
+
     }
+
+    useEffect(() => {
+        setUserStorage(JSON.parse(localStorage.getItem('user')));
+    }, [hamburguerClick])
 
 
     return (
@@ -85,10 +133,6 @@ const HeaderMenu = () => {
                             <img src={LogoIcon} alt="logo" />
                         </Link>
                     </li>
-                    {/* <li className="ul-li-header-menu">
-                        <SearchBar />
-                    </li> */}
-
                     <li className="ul-li-header-menu fullscreen">
                         <ul className="ul-item">
                             <li className="li-item">
@@ -111,38 +155,67 @@ const HeaderMenu = () => {
                         </ul>
                     </li>
                     <li className="ul-li-header-menu-hamburgue" onClick={handleHamburguerClick}>
-                                <ul className="ul-item-hamburgue">
-                                    <li className="li-item menu">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                    </li>
-                                </ul>
+                        <ul className="ul-item-hamburgue">
+                            <li className="li-item menu">
+                                <span></span>
+                                <span></span>
+                                <span></span>
                             </li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
             {
                 hamburguerClick ?
                     <li className="ul-li-header-menu responsive">
                         <ul className="ul-item responsive">
-                            <li className="li-item">
-                                <img src={ContatoIcon} alt="" />
+                            {userStorage ?
+                                <li className="li-item profile">
+                                    <div className="profilemain">
+                                        <p className="header-p user">{userStorage?.first_name}</p>
+                                        <img className="imgProfile" src={imageProfile ?? UserIcon} alt="" />
+                                    </div>
+
+                                    <p className="showprofile"  onClick={handleClickUser}>ver perfil</p>
+                                </li>
+                                :
+                                <>
+                                    <ul className="li-item profile">
+                                        <li className="li-item li-item-account" onClick={handleClickLogin}>
+                                            <p className="header-p">Entrar na conta</p>
+                                        </li>
+                                        <li className="li-item li-item-account" onClick={handleClickCreateAccount}>
+                                            <p className="header-p">Criar Conta</p>
+                                        </li>
+                                    </ul>
+
+                                </>
+                            }
+                            <li className="li-item firtitem">
                                 <p className="header-p">Entre em contato</p>
+                                <img src={ContatoIcon} alt="" />
                             </li>
                             <li className="li-item">
-                                <img src={CompanhiaIcon} alt="" />
+
                                 <p className="header-p">Quem somos</p>
+                                <img src={CompanhiaIcon} alt="" />
                             </li>
                             <li className="li-item">
+                                <p className="header-p">Alterar Thema</p>
                                 <label className="switch">
                                     <input type="checkbox" ref={switchClick} onClick={handleChangerTheme} />
                                     <span className="slider round"></span>
                                 </label>
-                                <p className="header-p">Alterar Thema</p>
                             </li>
-                            <li className="li-item li-item-account">
-                                <Logout />
-                            </li>
+
+
+                            {userStorage &&
+                                <li className="li-item li-item-account logout" onClick={handleClickLogout}>
+                                    <p>Sair da conta</p>
+                                </li>
+                            }
+
+
                         </ul>
                     </li> : null
             }

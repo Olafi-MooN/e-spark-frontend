@@ -5,9 +5,9 @@ import UserIcon from '../../images/user.svg';
 import { AuthContext } from '../../providers/auth';
 
 const Logout = () => {
-    const { setIsLoginActive, isCadastroActive, setIsCadastroActive, user, setUser } = useContext(AuthContext);
+    const { setIsLoginActive, isCadastroActive, setIsCadastroActive, setUser } = useContext(AuthContext);
     const history = useHistory();
-    const [ imageProfile ] = useState(localStorage.getItem('userImage'));
+    const [imageProfile] = useState(localStorage.getItem('userImage'));
 
     function handleClickJoin() {
         setIsLoginActive(true);
@@ -22,7 +22,7 @@ const Logout = () => {
         console.log(isCadastroActive);
     }
 
-    function handleClickLogout(){
+    function handleClickLogout() {
         setUser(null);
         localStorage.clear();
         history.push('/');
@@ -30,16 +30,15 @@ const Logout = () => {
 
     const userStorage = JSON.parse(localStorage.getItem('user'));
 
-    
     return (
         <>
             <label htmlFor="account-checkbox" className="user-icon-label">
-                <img src={ imageProfile ?? UserIcon} alt="profile" className="image-profile-header"/>
+                <img src={imageProfile ?? UserIcon} alt="profile" className="image-profile-header" />
             </label>
-            {(user !== null || userStorage)  ?
+            {userStorage ?
                 <>
-                    <input type="checkbox" id="account-checkbox"  />
-                    <label htmlFor="account-checkbox" className="label-entrar"> { user?.email ?? userStorage?.email } </ label>
+                    <input type="checkbox" id="account-checkbox" hidden />
+                    <label htmlFor="account-checkbox" className="label-entrar"> {userStorage?.email} </ label>
                     <ul>
                         <li onClick={handleClickUser}><p>Perfil</p></li>
                         <li onClick={handleClickLogout}><p>Sair</p></li>
@@ -59,5 +58,6 @@ const Logout = () => {
         </>
     )
 }
+
 
 export { Logout };

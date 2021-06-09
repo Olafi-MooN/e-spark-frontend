@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 import { AuthContext } from '../../providers/auth';
 import { PaymentContext } from '../../providers/payment';
@@ -10,6 +10,8 @@ import { Cadastro } from '../../components/Cadastro/';
 import { LeftMenu } from '../../components/LeftMenu/';
 import { Footer } from '../../components/Footer/'
 import { Login } from '../../components/Login/';
+import { Loading } from '../../components/Loading';
+
 import { FaCar } from 'react-icons/fa';
 import { FaAdjust } from 'react-icons/fa';
 import { FaMoneyCheck } from 'react-icons/fa';
@@ -18,7 +20,6 @@ import { FaDollarSign } from 'react-icons/fa';
 import { FaHome } from 'react-icons/fa';
 
 import './checkout.css';
-import { Loading } from '../../components/Loading';
 
 const Checkout = () => {
 
