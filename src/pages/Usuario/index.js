@@ -155,7 +155,7 @@ const Usuario = () => {
         setHistoryDate(result);
         setIsLoading(false);
       });
-  }, [showHistory, user.id]);
+  }, [showHistory, user.id, token]);
 
   useEffect(() => {
     var profilePhoto = localStorage.getItem('userImage');

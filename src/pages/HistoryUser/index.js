@@ -27,7 +27,7 @@ const Historico = () => {
                 console.log(result.usercars)
                 setIsLoading(false);
             });
-    }, []);
+    }, [token]);
 
     return (
         <>
