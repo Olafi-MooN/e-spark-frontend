@@ -25,6 +25,7 @@ const Checkout = () => {
 
     const { isLoginActive, isCadastroActive } = useContext(AuthContext);
     const { plan, aboutCar, creditCard } = useContext(PaymentContext);
+    const [token] = useState(localStorage.getItem("token"));
     const [isLoading, setIsLoading ] = useState(false);
     const history = useHistory();
 
@@ -39,7 +40,8 @@ const Checkout = () => {
             cache: 'no-cache',
             credentials: 'same-origin',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'x-access-token': token,
             },
             redirect: 'follow',
             referrerPolicy: 'no-referrer',

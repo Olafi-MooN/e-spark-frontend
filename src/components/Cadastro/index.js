@@ -84,6 +84,7 @@ const Cadastro = () => {
         if (responseToJson.status === false) {
             showAlert(responseToJson.message, 5000)
         } else {
+            localStorage.setItem('token', responseToJson.data);
             setToken(responseToJson.data);
             setIsCadastroActive(false);
             return
@@ -112,7 +113,7 @@ const Cadastro = () => {
                                     onChange={(e) => setFirst_name(e.target.value)}
                                 />
                                 <Input
-                                    titleInput="Primeiro nome"
+                                    titleInput="Segundo nome"
                                     typeInput="text"
                                     placeholderInput="master"
                                     onChange={(e) => setLast_name(e.target.value)}

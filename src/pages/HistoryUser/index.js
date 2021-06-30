@@ -6,17 +6,22 @@ import { Loading } from "../../components/Loading";
 import { Footer } from "../../components/Footer/";
 import "./historyuser.css";
 
-
 const Historico = () => {
 
     const [historyDate, setHistoryDate] = useState();
     const [isLoading, setIsLoading] = useState(true);
+    const [token] = useState(localStorage.getItem('token'));
 
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem('user'));
 
-        fetch(`https://e-spark-back.herokuapp.com/userscars/${user.id}`)
-            .then(response => response.json())
+        fetch(`https://e-spark-back.herokuapp.com/userscars/${user.id}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-access-token': token,
+            }
+        }).then(response => response.json())
             .then(result => {
                 setHistoryDate(result);
                 console.log(result.usercars)

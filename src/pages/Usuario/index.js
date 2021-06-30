@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import { useHistory } from "react-router-dom";
 import { HeaderMenu } from "../../components/HeaderMenu";
 import { LeftMenu } from "../../components/LeftMenu";
 import { Footer } from "../../components/Footer";
@@ -6,7 +7,6 @@ import { Loading } from "../../components/Loading";
 import { Alert } from "../../components/Alert";
 
 import UserIcon from '../../images/user.svg';
-
 
 import "./usuario.css";
 
@@ -20,6 +20,7 @@ const Usuario = () => {
 
   const [imagem, setImagem] = useState();
   const [imagemProfile, setImagemProfile] = useState(null);
+  const [token] = useState(localStorage.getItem('token'));
 
   const [isAlert, setIsAlert] = useState(false);
   const [textAlert, setTextAlert] = useState(false);
@@ -32,6 +33,9 @@ const Usuario = () => {
   const getEmail = useRef(null);
   const oldPassword = useRef(null);
   const newPassword = useRef(null);
+
+  const history = useHistory();
+
 
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
 
@@ -51,15 +55,15 @@ const Usuario = () => {
   }
 
   async function updatePassword() {
-
-    if(!oldPassword.current.value || !newPassword.current.value) {
+    if (!oldPassword.current.value || !newPassword.current.value) {
       return showAlert('Preencha todos os campos!', 6000, '#B8AB00')
     }
 
     const updatePassword = await fetch(`https://e-spark-back.herokuapp.com/users/${user.id}/password`, {
       method: 'PUT',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'x-access-token': token,
       },
       body: JSON.stringify({
         password: oldPassword.current.value,
@@ -68,6 +72,8 @@ const Usuario = () => {
     });
 
     const result = await updatePassword.json();
+
+    console.log(result);
 
     if (result?.user[0] === 0) {
       console.log(result)
@@ -81,7 +87,9 @@ const Usuario = () => {
     const updateProfile = await fetch(`https://e-spark-back.herokuapp.com/users/${user.id}/profile`, {
       method: 'PUT',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'x-access-token': token,
+
       },
       body: JSON.stringify({
         first_name: getFirstname.current.value,
@@ -115,8 +123,34 @@ const Usuario = () => {
 
   }
 
+  async function deleteProfile() {
+    const deleteProfile = await fetch(`https://e-spark-back.herokuapp.com/users/${user.id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-access-token': token,
+      }
+    });
+
+    const result = await deleteProfile.json();
+
+    if(result === 1) {
+      history.push('/');
+      localStorage.setItem('token', '');
+      localStorage.setItem('user', '');
+    } else {
+      return showAlert('Ocorreu um erro ao deletar a conta', 6000, 'red');
+    }
+  }
+
   useEffect(() => {
-    fetch(`https://e-spark-back.herokuapp.com/userscars/${user.id}`)
+    fetch(`https://e-spark-back.herokuapp.com/userscars/${user.id}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-access-token': token,
+      }
+    })
       .then(response => response.json())
       .then(result => {
         setHistoryDate(result);
@@ -196,7 +230,7 @@ const Usuario = () => {
                 </fieldset>
                 <div className="bottom">
                   <button className="btnBottom update" onClick={updateProfile}>Atualizar</button>
-                  <button className="btnBottom delete">Deletar conta</button>
+                  <button className="btnBottom delete" onClick={deleteProfile}>Deletar conta</button>
                 </div>
               </>
             }

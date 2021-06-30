@@ -89,6 +89,7 @@ const Login = () => {
 
                 if (responseToJson) {
                     setIsLoginActive(false);
+                    localStorage.setItem('token', responseToJson.data);
                     setToken(responseToJson.data)
                 }
             }
