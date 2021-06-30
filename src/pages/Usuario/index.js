@@ -133,11 +133,10 @@ const Usuario = () => {
     });
 
     const result = await deleteProfile.json();
-
-    if(result === 1) {
+    console.log(result);
+    if(result.user === 1) {
       history.push('/');
-      localStorage.setItem('token', '');
-      localStorage.setItem('user', '');
+      localStorage.clear();
     } else {
       return showAlert('Ocorreu um erro ao deletar a conta', 6000, 'red');
     }
