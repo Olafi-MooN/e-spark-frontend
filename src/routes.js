@@ -14,7 +14,8 @@ import { Planos } from "./pages/Planos";
 import { Usuario } from "./pages/Usuario";
 import { Home } from "./pages/Home";
 import { Historico } from "./pages/HistoryUser";
-import { CardCredit } from './pages/CardCredit';
+import { CardCredit } from "./pages/CardCredit";
+import { ContactUs } from "./pages/ContactUs";
 
 export default function Routes() {
   return (
@@ -35,6 +36,7 @@ export default function Routes() {
           </AboutCarProvider>
           <Route path="/historyUser" component={Historico} />
           <Route path="/usuario" component={Usuario} />
+          <Route path="/contact" component={ContactUs} />
         </AuthProvider>
       </Switch>
     </BrowserRouter>
