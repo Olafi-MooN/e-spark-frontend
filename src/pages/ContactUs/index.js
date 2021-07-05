@@ -3,7 +3,9 @@ import React, { useContext } from "react";
 import { HeaderMenu } from "../../components/HeaderMenu/";
 import { LeftMenu } from "../../components/LeftMenu/";
 import { Footer } from "../../components/Footer/";
-
+import WppIcon from '../../images/wpp.png';
+import InstaIcon from '../../images/insta.png';
+import FaceIcon from '../../images/face.png';
 import "./contactus.css";
 
 const ContactUs = () => {
@@ -17,7 +19,7 @@ const ContactUs = () => {
             <div className="contact-item">
               <div className="contact-item">
                 <img
-                  src="https://logodownload.org/wp-content/uploads/2015/04/whatsapp-logo-1.png"
+                  src={WppIcon}
                   class="center"
                 ></img>
                 <h1>WhatsApp</h1>
@@ -31,7 +33,7 @@ const ContactUs = () => {
             <div className="contact-item">
               <div className="contact-item">
                 <img
-                  src="https://www.pnglib.com/wp-content/uploads/2021/02/instagram-logo-png_6023f9ae0feb9-680x680.png"
+                  src={InstaIcon}
                   class="center"
                 ></img>
                 <h1>Instagram</h1>
@@ -45,7 +47,7 @@ const ContactUs = () => {
             <div className="contact-item">
               <div className="contact-item">
                 <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1200px-Facebook_Logo_%282019%29.png"
+                  src={FaceIcon}
                   class="center"
                 ></img>
                 <h1>Facebook</h1>
