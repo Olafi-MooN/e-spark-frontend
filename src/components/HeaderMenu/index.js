@@ -136,12 +136,16 @@ const HeaderMenu = () => {
                     <li className="ul-li-header-menu fullscreen">
                         <ul className="ul-item">
                             <li className="li-item">
-                                <img src={ContatoIcon} alt="" />
-                                <p className="header-p">Entre em contato</p>
+                            <Link to="/contact">
+                                     <img src={ContatoIcon} alt="" />
+                                        <p className="header-p">Entre em contato</p>
+                            </Link>
                             </li>
                             <li className="li-item">
+                            <Link to="/about">
                                 <img src={CompanhiaIcon} alt="" />
                                 <p className="header-p">Quem somos</p>
+                             </Link>
                             </li>
                             <li className="li-item">
                                 <label className="switch">
