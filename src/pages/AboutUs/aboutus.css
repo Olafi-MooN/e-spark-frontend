@@ -1,0 +1,41 @@
+.container-about {
+    width: 100%;
+    min-height: 55vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;    
+}
+
+.container-h1us{
+    color:black;
+}
+
+
+.container-about3{
+    background-color: #fff;
+    width: 60%;
+    min-height: 530px;
+    border-radius: 20px;
+    padding: 20px;    
+    
+}
+
+p{
+    margin-top: 1%;
+    font-size:14pt;
+    
+
+}
+
+.subtitulo
+{
+    font-size:18pt;
+    font-weight:bold;
+}
+
+.listaAbout
+{
+    margin-right:25px;
+    margin-left:25px;
+}
