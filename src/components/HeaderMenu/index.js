@@ -136,16 +136,12 @@ const HeaderMenu = () => {
                     <li className="ul-li-header-menu fullscreen">
                         <ul className="ul-item">
                             <li className="li-item">
-                            <Link to="/contact">
-                                     <img src={ContatoIcon} alt="" />
-                                        <p className="header-p">Entre em contato</p>
-                            </Link>
+                                <img src={ContatoIcon} alt="" />
+                                <p className="header-p"><Link to="/contact">Entre em contato</Link></p>
                             </li>
                             <li className="li-item">
-                            <Link to="/about">
                                 <img src={CompanhiaIcon} alt="" />
-                                <p className="header-p">Quem somos</p>
-                             </Link>
+                                <p className="header-p"><Link to="/about">Quem somos</Link></p>
                             </li>
                             <li className="li-item">
                                 <label className="switch">
@@ -180,7 +176,7 @@ const HeaderMenu = () => {
                                         <img className="imgProfile" src={imageProfile ?? UserIcon} alt="" />
                                     </div>
 
-                                    <p className="showprofile"  onClick={handleClickUser}>ver perfil</p>
+                                    <p className="showprofile" onClick={handleClickUser}>ver perfil</p>
                                 </li>
                                 :
                                 <>

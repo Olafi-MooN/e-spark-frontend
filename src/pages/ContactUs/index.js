@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import { HeaderMenu } from "../../components/HeaderMenu/";
 import { LeftMenu } from "../../components/LeftMenu/";
@@ -20,6 +20,7 @@ const ContactUs = () => {
               <div className="contact-item">
                 <img
                   src={WppIcon}
+                  alt="WhatsApp icon"
                   class="center"
                 ></img>
                 <h1>WhatsApp</h1>
@@ -34,6 +35,7 @@ const ContactUs = () => {
               <div className="contact-item">
                 <img
                   src={InstaIcon}
+                  alt="Insta icon"
                   class="center"
                 ></img>
                 <h1>Instagram</h1>
@@ -48,6 +50,7 @@ const ContactUs = () => {
               <div className="contact-item">
                 <img
                   src={FaceIcon}
+                  alt="Face icon"
                   class="center"
                 ></img>
                 <h1>Facebook</h1>
