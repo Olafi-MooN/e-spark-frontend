@@ -1,1 +1,4 @@
-[![Demo CountPages alpha](https://share.gifyoutube.com/KzB6Gb.gif)](https://www.youtube.com/watch?v=ek1j272iAmc)
+Acesse o link para o video do projeto:
+
+https://drive.google.com/file/d/1r-bMU5tNMrt8pfMAXtzw2-Vk2twrTzGE/view?usp=sharing
+
