@@ -59,7 +59,7 @@ const Usuario = () => {
       return showAlert('Preencha todos os campos!', 6000, '#B8AB00')
     }
 
-    const updatePassword = await fetch(`https://e-spark-back.herokuapp.com/users/${user.id}/password`, {
+    const updatePassword = await fetch(`https://e-spark-backend.onrender.com/users/${user.id}/password`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -84,7 +84,7 @@ const Usuario = () => {
   }
 
   async function updateProfile() {
-    const updateProfile = await fetch(`https://e-spark-back.herokuapp.com/users/${user.id}/profile`, {
+    const updateProfile = await fetch(`https://e-spark-backend.onrender.com/users/${user.id}/profile`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -124,7 +124,7 @@ const Usuario = () => {
   }
 
   async function deleteProfile() {
-    const deleteProfile = await fetch(`https://e-spark-back.herokuapp.com/users/${user.id}`, {
+    const deleteProfile = await fetch(`https://e-spark-backend.onrender.com/users/${user.id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -134,7 +134,7 @@ const Usuario = () => {
 
     const result = await deleteProfile.json();
     console.log(result);
-    if(result.user === 1) {
+    if (result.user === 1) {
       history.push('/');
       localStorage.clear();
     } else {
@@ -143,7 +143,7 @@ const Usuario = () => {
   }
 
   useEffect(() => {
-    fetch(`https://e-spark-back.herokuapp.com/userscars/${user.id}`, {
+    fetch(`https://e-spark-backend.onrender.com/userscars/${user.id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

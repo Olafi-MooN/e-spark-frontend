@@ -15,7 +15,7 @@ const Historico = () => {
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem('user'));
 
-        fetch(`https://e-spark-back.herokuapp.com/userscars/${user.id}`, {
+        fetch(`https://e-spark-backend.onrender.com/userscars/${user.id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

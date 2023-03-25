@@ -24,7 +24,7 @@ const Home = () => {
     const [fakeDateCars] = useState([1, 2, 3, 4, 5, 6]);
 
     useEffect(() => {
-        fetch('https://e-spark-back.herokuapp.com/cars')
+        fetch('https://e-spark-backend.onrender.com/cars')
             .then(response => response.json())
             .then(result => {
                 setDateCars(result.cars);
@@ -34,14 +34,14 @@ const Home = () => {
 
     return (
         <>
-            { isLoading ? <Loading /> : <div className="container-home">
+            {isLoading ? <Loading /> : <div className="container-home">
 
                 <HeaderMenu />
                 <SlideShow />
                 <LeftMenu />
                 <h1 className="container-home-h1">
                     Escolha uma categoria
-        </h1>
+                </h1>
                 <ScrollCategory />
                 <h1 className="container-home-h1 black">{nameCategoryActive}</h1>
                 <main>

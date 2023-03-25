@@ -52,7 +52,7 @@ const Login = () => {
         } else if (!email || !password) {
             setIsLoading(false)
             showAlert('Por favor, preencha todos os campos!', 5000);
-        } 
+        }
         if (password === '' || password === null) {
             setIsLoading(false)
             showAlert('Por favor, preencha todos os campos!', 5000);
@@ -61,7 +61,7 @@ const Login = () => {
         if (email && password) {
             let hasResponse = true;
 
-            const response = await fetch('https://e-spark-back.herokuapp.com/users/login', {
+            const response = await fetch('https://e-spark-backend.onrender.com/users/login', {
                 method: 'POST',
                 mode: 'cors',
                 cache: 'no-cache',
@@ -101,7 +101,7 @@ const Login = () => {
 
             {isLoginActive ?
                 <div className={isLoginActive ? "container-login" : "container-login animation-close"}>
-                    { isLoading ? <Loading/> : null }
+                    {isLoading ? <Loading /> : null}
                     <div className="container-login-box">
 
                         <div className="container-login-top">

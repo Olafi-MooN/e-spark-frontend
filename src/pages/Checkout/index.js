@@ -26,7 +26,7 @@ const Checkout = () => {
     const { isLoginActive, isCadastroActive } = useContext(AuthContext);
     const { plan, aboutCar, creditCard } = useContext(PaymentContext);
     const [token] = useState(localStorage.getItem("token"));
-    const [isLoading, setIsLoading ] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const history = useHistory();
 
     async function handleConfirmPaymnent() {
@@ -34,7 +34,7 @@ const Checkout = () => {
 
         const user = JSON.parse(localStorage.getItem('user'));
         setIsLoading(true);
-        const response = await fetch('https://e-spark-back.herokuapp.com/userscars', {
+        const response = await fetch('https://e-spark-backend.onrender.com/userscars', {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache',
@@ -47,18 +47,18 @@ const Checkout = () => {
             referrerPolicy: 'no-referrer',
             body: JSON.stringify({
                 user_id: user.id,
-	            car_id: aboutCar.id
+                car_id: aboutCar.id
             })
         }).catch(e => {
             hasResponse = false;
         })
 
-        if ( hasResponse === false) {
+        if (hasResponse === false) {
             return alert('Erro ao conectar com o banco de dados (status 500)');
-        } 
+        }
 
         const result = await response.json();
-        
+
         if (result?.status === true) {
             return history.push('/payment');
         } else {
@@ -68,7 +68,7 @@ const Checkout = () => {
 
     return (
         <div className="container-home">
-            {isLoading && <Loading />} 
+            {isLoading && <Loading />}
             <HeaderMenu />
             <LeftMenu />
 

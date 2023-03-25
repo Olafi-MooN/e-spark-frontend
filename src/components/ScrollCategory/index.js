@@ -25,7 +25,7 @@ const ScrollCategory = () => {
         'SUV']);
 
     useEffect(() => {
-        fetch('https://e-spark-back.herokuapp.com/cars')
+        fetch('https://e-spark-backend.onrender.com/cars')
             .then(response => response.json())
             .then(result => {
                 const arrayModel = result.cars.map(item => {
@@ -54,9 +54,9 @@ const ScrollCategory = () => {
                 {modelCars.map((item, index) => (
                     <div className="item-scroll" key={index} >
                         <p ref={categoryValueName} onClick={(e) => {
-                                setNameCategoryActive(e.target.textContent)
-                                setActiveCategory(true);
-                            }} >{item}</p>
+                            setNameCategoryActive(e.target.textContent)
+                            setActiveCategory(true);
+                        }} >{item}</p>
                     </div>
                 ))}
             </div>

@@ -21,7 +21,7 @@ const Cadastro = () => {
     const [textAlert, setTextAlert] = useState('');
     const [isLoading, setIsloading] = useState(false);
 
-    const { isCadastroActive, setIsCadastroActive, setIsLoginActive, setToken} = useContext(AuthContext);
+    const { isCadastroActive, setIsCadastroActive, setIsLoginActive, setToken } = useContext(AuthContext);
 
     function handleCloseCadastro() {
         setIsCadastroActive(false);
@@ -55,7 +55,7 @@ const Cadastro = () => {
 
         let hasResponse = true;
 
-        const response = await fetch('https://e-spark-back.herokuapp.com/users', {
+        const response = await fetch('https://e-spark-backend.onrender.com/users', {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache',
@@ -95,7 +95,7 @@ const Cadastro = () => {
         <>
             {isCadastroActive ?
                 <div className={"container-login"}>
-                    {isLoading ? <Loading/> : null }
+                    {isLoading ? <Loading /> : null}
                     <div className="container-login-box">
 
                         <div className="container-login-top">
